@@ -1,0 +1,2864 @@
+706 2 
+[+10d][{ADDDATES(str(._TODAYSDATE),"0","0","10")}]
+[+10m][{ADDDATES(str(._TODAYSDATE),"0","10","0")}]
+[+10w][{ADDDATES(str(._TODAYSDATE),"0","0","70")}]
+[+10y][{sub(ADDDATES(str(._TODAYSDATE),"9","0","0"), 7)}]
+[+11d][{ADDDATES(str(._TODAYSDATE),"0","0","11")}]
+[+11m][{ADDDATES(str(._TODAYSDATE),"0","11","0")}]
+[+11w][{ADDDATES(str(._TODAYSDATE),"0","0","77")}]
+[+12d][{ADDDATES(str(._TODAYSDATE),"0","0","12")}]
+[+12m][{ADDDATES(str(._TODAYSDATE),"0","12","0")}]
+[+12w][{ADDDATES(str(._TODAYSDATE),"0","0","84")}]
+[+1d][{ADDDATES(str(._TODAYSDATE),"0","0","1")}]
+[+1m][{ADDDATES(str(._TODAYSDATE),"0","1","0")}]
+[+1w][{ADDDATES(str(._TODAYSDATE),"0","0","7")}]
+[+1y][{ADDDATES(str(._TODAYSDATE),"1","0","0")}]
+[+2d][{ADDDATES(str(._TODAYSDATE),"0","0","2")}]
+[+2m][{ADDDATES(str(._TODAYSDATE),"0","2","0")}]
+[+2w][{ADDDATES(str(._TODAYSDATE),"0","0","14")}]
+[+2y][{sub(ADDDATES(str(._TODAYSDATE),"2","0","0"), 7)}]
+[+3d][{ADDDATES(str(._TODAYSDATE),"0","0","3")}]
+[+3m][{ADDDATES(str(._TODAYSDATE),"0","3","0")}]
+[+3w][{ADDDATES(str(._TODAYSDATE),"0","0","21")}]
+[+3y][{sub(ADDDATES(str(._TODAYSDATE),"3","0","0"), 7)}]
+[+4d][{ADDDATES(str(._TODAYSDATE),"0","0","4")}]
+[+4m][{ADDDATES(str(._TODAYSDATE),"0","4","0")}]
+[+4w][{ADDDATES(str(._TODAYSDATE),"0","0","28")}]
+[+4y][{sub(ADDDATES(str(._TODAYSDATE),"4","0","0"), 7)}]
+[+5d][{ADDDATES(str(._TODAYSDATE),"0","0","5")}]
+[+5m][{ADDDATES(str(._TODAYSDATE),"0","5","0")}]
+[+5w][{ADDDATES(str(._TODAYSDATE),"0","0","35")}]
+[+5y][{sub(ADDDATES(str(._TODAYSDATE),"5","0","0"), 7)}]
+[+6d][{ADDDATES(str(._TODAYSDATE),"0","0","6")}]
+[+6m][{ADDDATES(str(._TODAYSDATE),"0","6","0")}]
+[+6w][{ADDDATES(str(._TODAYSDATE),"0","0","42")}]
+[+6y][{sub(ADDDATES(str(._TODAYSDATE),"6","0","0"), 7)}]
+[+7d][{ADDDATES(str(._TODAYSDATE),"0","0","7")}]
+[+7m][{ADDDATES(str(._TODAYSDATE),"0","7","0")}]
+[+7w][{ADDDATES(str(._TODAYSDATE),"0","0","49")}]
+[+7y][{sub(ADDDATES(str(._TODAYSDATE),"7","0","0"), 7)}]
+[+8d][{ADDDATES(str(._TODAYSDATE),"0","0","8")}]
+[+8m][{ADDDATES(str(._TODAYSDATE),"0","8","0")}]
+[+8w][{ADDDATES(str(._TODAYSDATE),"0","0","56")}]
+[+8y][{sub(ADDDATES(str(._TODAYSDATE),"8","0","0"), 7)}]
+[+9d][{ADDDATES(str(._TODAYSDATE),"0","0","9")}]
+[+9m][{ADDDATES(str(._TODAYSDATE),"0","9","0")}]
+[+9w][{ADDDATES(str(._TODAYSDATE),"0","0","63")}]
+[+9y][{sub(ADDDATES(str(._TODAYSDATE),"9","0","0"), 7)}]
+[+circ][{fn CIRC() {MEL_ADD_PROBLEM('MDXOF','Circumcision','ICD-V50.2',str(._TODAYSDATE),ADDDATES(str(._TODAYSDATE),"0","1","0")) return ""}}{CIRC()}.circ]
+[+ebp][{fn EBP() {MEL_ADD_PROBLEM('DX OF','ELEVATED BLOOD PRESSURE WITHOUT DIAGNOSIS OF HYPERTENSION','ICD-796.2',str(._TODAYSDATE)) return "Will have the patient check blood pressure once a week over the next month.  If systolic readings are consistantly 140 or higher or diastolic readings are 90 or higher, the patient will come in and we will discuss starting medication.  Discussed that weight loss and regular exercise can help lower blood pressure."}}{EBP()}
+]
+[+fatigue][{fn F() {MEL_ADD_PROBLEM('DX OF','FATIGUE','ICD-780.79',str(._TODAYSDATE)) return ""}}{F()}]
+[+std][{fn STD() {MEL_ADD_PROBLEM('MDXOF','Screening for venereal disease','ICD-V74.5',str(._TODAYSDATE),ADDDATES(str(._TODAYSDATE),"0","1","0")) return ""}}{STD()}]
+[+vitd][{fn F() {MEL_ADD_PROBLEM('DX OF','VITAMIN D DEFICIENCY','ICD-268.9',str(._TODAYSDATE)) return ".vitdtest"}}{F()} ]
+[+vitd2][{fn F() {local h,i
+h=getfield(PROB_AFTER("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[3\],5,5)="268.9" then 
+return ".vitdrep"
+endif
+endfor
+MEL_ADD_PROBLEM('DX OF','VITAMIN D DEFICIENCY','ICD-268.9',str(._TODAYSDATE)) return ".vitdrep"}}{F()} ]
+[-10d][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","10")}]
+[-11d][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","11")}]
+[-12d][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","12")}]
+[-1d][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","1")}]
+[-1w][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","7")}]
+[-2d][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","2")}]
+[-2w][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","14")}]
+[-3d][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","3")}]
+[-4d][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","4")}]
+[-5d][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","5")}]
+[-6d][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","6")}]
+[-7d][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","7")}]
+[-8d][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","8")}]
+[-9d][{SUBTRACTDATES(str(._TODAYSDATE),"0","0","9")}]
+[.10d][ten days]
+[.10m][ten months]
+[.10w][ten weeks]
+[.10y][ten years]
+[.11m][eleven months]
+[.11w][eleven weeks]
+[.12m][twelve months]
+[.12w][twelve weeks]
+[.1bid][one pill by mouth twice daily]
+[.1d][one day]
+[.1m][one month]
+[.1qd][one pill by mouth once daily]
+[.1qid][one pill by mouth four times daily]
+[.1tid][one pill by mouth three times daily]
+[.1w][one week]
+[.1y][one year]
+[.2bid][two pills by mouth twice daily]
+[.2d][two days]
+[.2m][two months]
+[.2qd][two pills by mouth once daily]
+[.2qid][two pills by mouth four times daily]
+[.2s][Discussed the rule of 2's with the patient.  If the patient is using the rescue inhaler more than two times a week, waking up with nocturnal asthma symptoms more than two times per month, or going through more than two inhalers per year, we need to be doing something different for maintenance therapy.]
+[.2sr][Reviewed the rule of 2's with the patient.  If the patient is using the rescue inhaler more than two times a week, waking up with nocturnal asthma symptoms more than two times per month, or going through more than two inhalers per year, we need to be doing something different for maintenance therapy.]
+[.2tid][two pills by mouth three times daily]
+[.2w][two weeks]
+[.2y][two years]
+[.3bid][three pills by mouth twice daily]
+[.3d][three days]
+[.3m][three months]
+[.3moa][{fn P() {local t=getarg(1),x=getarg(2)
+return val(DURATIONDAYS(t,ADDDATES(str(._TODAYSDATE),"0",str(x),"0")))}
+}{fn G() {local h,i
+if (LASTOBSVALUE("HGBA1c")<7),h=170,h=80
+if (LASTOBSVALUE("LDL")<100),i=350,i=80
+return h+","+i}
+}{fn R() {
+MEL_SEND_FLAG("Flag","ddiabetes","N",str(._TODAYSDATE),PATIENT._CASUALNAME,"Recall entered in today's note","Update","")
+return ""}}.3mob]
+[.3mob][{fn D() {local  f=getfield(getarg(1)),r=array(""),a=LASTOBSDATE("HGBA1C"),l=LASTOBSDATE("LDL"),u=LASTOBSDATE("MICROALB/CRE"),c=LASTOBSDATE("CREATININE")
+if (u="" or (P(u,3)>350)),insert(r,1,"Urine microalbumin/Cr ratio")
+if (c="" or (P(c,3)>170)),insert(r,1,"CMP")
+if (l="" or (P(l,3)>f\[2\])),insert(r,1,"FLP with reflex direct LDL")
+if (a="" or (P(a,3)>f\[1\])),insert(r,1,"HgbA1c")
+remove(r,size(r))
+return str(r,", ")}}Follow up for diabetic visit in 3 months
+Labs needed for that visit:  {D(G())}{R()}]
+[.3qd][three pills by mouth once daily]
+[.3qid][three pills by mouth four times daily]
+[.3tid][three pills by mouth three times daily]
+[.3w][three weeks]
+[.3y][three years]
+[.4bid][four pills by mouth twice daily]
+[.4d][four days]
+[.4m][four months]
+[.4qd][four pills by mouth once daily]
+[.4qid][four pills by mouth four times daily]
+[.4tid][four pills by mouth three times daily]
+[.4w][four weeks]
+[.4y][four years]
+[.5d][five days]
+[.5m][five months]
+[.5w][five weeks]
+[.5y][five years]
+[.6d][six days]
+[.6m][six months]
+[.6moa][{fn P() {local t=getarg(1),x=getarg(2)
+return val(DURATIONDAYS(t,ADDDATES(str(._TODAYSDATE),"0",str(x),"0")))}
+}{fn G() {local h,i
+if (LASTOBSVALUE("HGBA1c")<7),h=170,h=80
+if (LASTOBSVALUE("LDL")<100),i=350,i=80
+return h+","+i}
+}{fn R() {
+MEL_SEND_FLAG("Flag","ddiabetes","N",str(._TODAYSDATE),PATIENT._CASUALNAME,"Recall entered in today's note","Update","")
+return ""}}.6mob]
+[.6mob][{fn D() {local  f=getfield(getarg(1)),r=array(""),a=LASTOBSDATE("HGBA1C"),l=LASTOBSDATE("LDL"),u=LASTOBSDATE("MICROALB/CRE"),c=LASTOBSDATE("CREATININE")
+if (u="" or (P(u,6)>350)),insert(r,1,"Urine microalbumin/Cr ratio")
+if (c="" or (P(c,6)>170)),insert(r,1,"CMP")
+if (l="" or (P(l,6)>f\[2\])),insert(r,1,"FLP with reflex direct LDL")
+if (a="" or (P(a,6)>f\[1\])),insert(r,1,"HgbA1c")
+remove(r,size(r))
+return str(r,", ")}}Follow up for diabetic visit in 6 months
+Labs needed for that visit: {D(G())}{R()}]
+[.6qd][six pills by mouth once daily]
+[.6w][six weeks]
+[.6y][six years]
+[.7d][seven days]
+[.7m][seven months]
+[.7w][seven weeks]
+[.7y][seven years]
+[.8d][eight days]
+[.8m][eight months]
+[.8w][eight weeks]
+[.8y][eight years]
+[.99201][{fn N1() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","99201 - Office Visit, Level 1 - NEW Pt**","",c,d,"","","",USER.LOGINNAME)
+return ""}}{N1()}
+]
+[.99202][{fn N2() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","99202 - Office Visit, Level 2 - NEW Pt**","",c,d,"","","")
+return ""}}{N2()}]
+[.99203][{fn N3() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","99203 - Office Visit, Level 3 - NEW Pt**","",c,d,"","","")
+return ""}}{N3()}]
+[.99204][{fn N4() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","99204 - Office Visit, Level 4 - NEW Pt**","",c,d,"","","")
+return ""}}{N4()}]
+[.99205][{fn N5() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","99205 - Office Visit, Level 5 - NEW Pt**","",c,d,"","","")
+return ""}}{N5()}]
+[.99212][{fn E2() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","99212 - Office Visit, Level 2 - EST Pt**","",c,d,"","","")
+return ""}}{E2()}]
+[.99213][{fn E3() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","99213 - Office Visit, Level 3 - EST Pt**","",c,d,"","","")
+return ""}}{E3()}]
+[.99214][{fn E4() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","99214 - Office Visit, Level 4 - EST Pt**","",c,d,"","","")
+return ""}}{E4()}]
+[.99215][{fn E5() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","99215 - Office Visit, Level 5 - EST Pt**","",c,d,"","","")
+return ""}}{E5()}]
+[.9d][nine days]
+[.9m][nine months]
+[.9w][nine weeks]
+[.9y][nine years]
+[.abcde][Watch your moles for the following:
+A - asymetry: one half of the mole should look pretty much like the other half
+B - border: we should be able to clearly see where the moles stop and start
+C - color: is the color even or are there areas of darker or lighter color (or different colors like red or blue) within the mole
+D - diameter: moles that are bigger than the size of a pencil eraser are more likley to be a problem
+E - evolution: this is the most important - is it changing over time]
+[.acne][Discussed with the patient that topical treatments for acne only prevent the formation of new pimples and do not stop ones that are already in progress.  Discussed that it will therefore take 6-8 weeks before we may see improvement.  Discussed that sometimes the medication will hasten the formation of pimples that are already in progress and thus things may appear to get worse before it gets better.    Patient will let me know if there is any excesive dryness or skin irritation with the medication. ]
+[.adacel][{fn IM() {MEL_ADD_ORDER("S","Immunizations/Vaccines","90715 - Tdap Vaccine, 7-64 y/o**","","ICD-V06.1","Prophylactic Tdap","","","",USER.LOGINNAME)
+return "Will update patient's tetanus today."}}{IM()}]
+[.addvitd][{MEL_ADD_MEDICATION("VITAMIN D","one capsule by mouth once weekly for 8 weeks",str(._TODAYSDATE),"147462",ADDDATES(str(._TODAYSDATE),"0","3","0"),"8","0")} ]
+[.af][anterior fontanelle open and soft]
+[.ak][Discussed the nature of the problem with the patient.  Discussed that these are potentially precancerous.   Recommended cyrotherapy.   Patient is agreable with that.   Please see procedure note below.   ]
+[.albuterol][{fn AL(){local d=str(._TODAYSDATE)e="" r="Will try an albuterol inhaler.  Patient insturcted in propper inhaler technique."
+if useryesno("Exp 1 month?")="Yes",e=ADDDATES(d,"0","1","0")
+MEL_ADD_MEDICATION("PROAIR HFA","two inhalations every four to six hours as needed",d,"120696",e,"1","0")
+if useryesno("Inst?")="Yes",MEL_ADD_ORDER("S","Other Tests and Procedures","94664 - Demo to Patient on Utilzation of MDI Inhaler**","","","","","",""),return r
+r=r+"\\n\\n.mditeach"
+return r}}{AL()}]
+[.albuteroltxt][Will try an albuterol inhaler.  Patient insturcted in propper inhaler technique.]
+[.alive][Mom & Dad alive and well.]
+[.amitripinst][We will amitriptyline to try to help with your problem.  
+The main side effects are dry mouth and drowsiness.
+These will often go away in a few days but if they don't we should look at other options.  
+The medication should be taken 30 minutes before bedtime.  
+Different patients need different dosing based on the rate that their liver breaks the medication down so we may need to adjust the dose based on how it does.   
+]
+[.amitriptyline][Discussed trying amitriptyline to try to help with this problem.  Discussed potential side effects including dry mouth and drowsiness.  The medication should be taken 30 minutes before bedtime.  Discussed that different patients need different dosing based on the rate of metabolism so we will need to adjust the dose based on how the patient tolerates this.   Will start with 25 mg at bedtime and have the patient return in one month for re-evaluation.  ]
+[.amox][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(40,250,5,3)}]
+[.amox125][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(40,125,5,3)}]
+[.amox2][{INSERT_TEXT_COMP("Enterprise\\WHC\\Raduege","include")}
+{DS(40,250,5,3)} for ten days]
+[.amox4][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(90,400,5,2)}]
+[.amoxhd][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(90,250,5,3)}]
+[.ankle][Provided patient with an ankle stirrup splint to be worn full time for the next two weeks and with any strenuous activity for the next month to six weeks.  Discussed rest, ice, ibuprofen, elevation.  Discussed ankle rehabilitation exercises for ROM, strengthening and proprioception to be done starting as soon as it is comfortable and continuing for one month.  Patient should follow up if not improving over the next two weeks, sooner if worse.]
+[.ankleinst][Ankle instructions:
+Take ibuprofen 600 mg (three of the over-the-counter 200 mg pills) three times a day with food
+Ice the ankle for 5-10 minutes three times a day
+Get a stirrup splint and wear this whenever you are up and around on the ankle for the next two weeks and with any strenuous activity (such as sports or exercising) for the next month
+As soon as it is comfortable to do so, start the following rehabilitation exercises and continue them for the next month to six weeks.
+.ankleinst2]
+[.ankleinst2][For range of motion: draw the alphabet with your foot
+For strength:
+Use a piece of furniture that won't move away when you push against it.   Put the inner side of your foot against it and push 25 times.
+Do the same thing with the outer side of your foot 25 times.
+Loop a towel around the underside of your foot and hold it so that it doesn't move and push down against it 25 times.
+.ankleinst3]
+[.ankleinst3][Put 2 cans of soup in a bread bag or tube sock and tie it off.  Drape that over the foot so that there is one can of soup on either side.   Lift this with the foot 25 times.
+For balance:
+Make a rockerboard out of a flat piece of lumber about the size of a piece of notebook paper by screwing a cheap wooden drawer pull into the center of it.
+Place it on the floor knob side down and stand on it.
+Rock front to back 25 times
+Rock side to side 25 times
+Rock to the front left corner 25 times
+.ankleinst4]
+[.ankleinst4][Rock to the front right corner 25 times
+Do these exercises every night before you go to bed.   
+Call us if you are not improving over the next two weeks, sooner if you are getting worse. ]
+[.annual][{fn P() {local c="ICD-V70.0",d="Health maint",o=" - Preventive Care, ",a=PATIENT_AGE(),e=" - EST Pt**",t=array("18-39 y/o","40-64 y/o","65+ yrs"),b="9939",n=array("5","6","7"),i=0
+if useryesno("Est?")="No" then e=" - NEW Pt**"
+b="9938"
+endif
+if PATIENT.SEX=="F" then
+if useryesno("GYN?")="Yes" then
+c=c+"|ICD-V72.31"
+d=d+"|Routine GYN"
+endif
+endif
+if (a<40),i=1,i=2
+if (a>64),i=3
+o=b+n\[i\]+o+t\[i\]+e
+MEL_ADD_ORDER("S","Preventive Care/Counseling",o,"",c,d,"","","")
+return ""}}{P()}]
+[.antic][Anticipatory guidance topics discussed.  ]
+[.ap][{INSERT_FORM_COMP("Enterprise\\WHC\\Exam","WHC Assessment/Plan")}]
+[.aspenletter][Aspen Orthopedics
+19475 W. North Ave.  Suite 201
+Brookfield,  WI   53045-4199
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.astelin][Will try the patient on Astelin nasal spray.  Patient was instructed in its use, two sprays in each nostril twice daily.  Patient will let us know how this works.]
+[.astelininst][Shake the nose spray well.
+Look down at your shoes and put the inhaler in your nose
+Spray and sniff at the same time.
+Do the first spray on the right side, then the first spray on the left side then the second spray on the right side and the second spray on the left side.   
+Keep looking at your shoes for 30 seconds after you spray to minimize the amount that runs down the back of your throat.   ]
+[.augmentin][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(45,400,5,2)}]
+[.augmentines][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(90,600,5,2)}]
+[.avnick][conjunctiva are not injected, pupils equal, round and reactive to light, discs sharp and flat,  a/v nicking bilaterally, no hemorrhages, or exudates]
+[.bactrim][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(10,40,5,2)}]
+[.bb][No loss of bowel or bladder control.]
+[.beta][serum quantitative beta-HCG]
+[.betadine][Area was prepped with betadine. ]
+[.ble][in lower extremities bilateraly]
+[.bmi][{ fn BMI() { LOCAL res
+res = "\\nWeight: "+OBSANY("Weight")+"\\nHeight: "+OBSANY("Height")+"\\nBMI: "+OBSANY("BMI") 
+ret res}} { BMI() }]
+[.bogm][boggy mucosa]
+[.bp][Will have the patient check the blood pressure once weekly and record on a card.  If there are multiple readings > 140/90 {If PATIENT.SEX == "M" , "he", if PATIENT.SEX == "F", "she", if PATIENT.SEX == "", "patient" } will return in one month for consideration of antihypertensive medication.  Discussed lifestyle changes that can improve blood pressure including regular exercise, weight loss and decreasing salt intake. ]
+[.btest][{fn R2D() {local j=0,R
+R=getfield(getarg(1),"|","")
+for j=1, j<(size(R)+1), j=j+1
+do
+R\[j\]=getfield(R\[j\],"^","")
+endfor
+return R}}
+
+{fn BTEST() {local A
+A = R2D(MEDS_AFTER("delimited"))
+return A\[2\]\[7\] }}{BTEST()}]
+[.bue][in upper extremities bilaterally]
+[.bung][{fn TIT_SCHED() {LOCAL s, i
+s="\\tDates\\t\\t\\t\\tAM\\tnoon\\tPM\\n"
+for i=1, i<16 , i=i+1
+do
+s=s+"\\t"+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+if i=3 then
+s=s+"\\t\\t0\\t0\\t1\\n"
+endif
+if i=6 then
+s=s+"\\t\\t1\\t0\\t1\\n"
+endif
+if i=9 then
+s=s+"\\t\\t1\\t1\\t1\\n"
+endif
+if i=12 then
+s=s+"\\t\\t1\\t1\\t2\\n"
+endif
+endfor
+return s
+}} {TIT_SCHED()}]
+[.bung2][{fn BUNG() {
+if useryesno("?")="No",return "No way"
+return "Aye, aye"}}{BUNG()}
+]
+[.bung3][{ORDER_CUST_LIST("Office Visit Type")}]
+[.bung4][{fn A() {local h,i
+h=getfield(PROB_AFTER("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+endfor
+return h}}{fn B() {local ar,r
+ar=A()
+for j=1, j<(size(ar)+1), j=j+1
+do
+r=getfield(LIST_ASSESSMENTS(ar\[j\]\[1\],ar\[j\]\[2\],ar\[j\]\[3\],"delimited"),"^","")
+userok(str(r,"\\n"))
+endfor
+return ""}}{B()}]
+[.bung5][{ORDER_CUST_LIST("DERM - Destruction")}]
+[.bung6][{ORDER_CUST_LIST("Procedures - Misc")}]
+[.bung7][{fn P() {local t=getarg(1),x=getarg(2)
+return DURATIONDAYS(t,ADDDATES(str(._TODAYSDATE),"0",str(x),"0"))}}
+{if (LASTOBSDATE("HGBA1C")="" or P(LASTOBSDATE("HGBA1C"),3)>170),userok("bung")}  ]
+[.bunga1c][{fn LSCR() {local d,r
+if (getnargs()>0)then
+d=ADDDATES(str(._TODAYSDATE),"0",str(getarg(1)),"0")
+r="have patient return fasting for a"
+else d=str(._TODAYSDATE)
+r="get a fasting"
+endif
+MEL_ADD_ORDER("T","Labs","Glycohemoglobin (A1c)","","ICD-250.00","DM Type II","","","N","",d)
+return "Will "+r+" lipid profile for screening."
+}}{LSCR(1)}]
+[.bungaf][{fn R() {
+MEL_SEND_FLAG("Flag","ahfloyd","N",str(._TODAYSDATE),"Recall entered","Recall entered in today's note","Update","")
+return ""}}{R()}Sent to recall desktop
+Ordering Provider:  {PATIENT.RESPPROVID}
+Time to be done:  
+Labs or other testing include:  
+ICD-9 code:
+Visit to follow testing:  ]
+[.bungai][{fn AI(){local i=OBSNOW("Instructions")
+OBSNOW("Instructions",i+"\\nMore insruction",sub(str(DOCUMENT.CLINICALDATE),1,10))
+return ""}}{AI()}]
+[.bungapt][Status: {APPTS_BY_STATUS("scheduled")}
+
+Next: {APPT_NEXT()}]
+[.bungapt2][{fn APTBUNG() {local h=getfield(APPTS_BY_STATUS("scheduled"),"\\r","")
+userok(APPTS_BY_STATUS("scheduled"))
+return size(h)}}{APTBUNG()}]
+[.bungapt3][{fn F() {local d=str(._TODAYSDATE),c=getarg(1)
+if c==d then 
+if useryesno("Has patient been seen yet today?")="No" then return 1
+endif
+endif
+return DURATIONDAYS(d,c)}}
+{fn NA() {local i,h=getfield(APPTS_BY_STATUS("scheduled"),"\\r","")
+for i=2, i<(size(h)+1), i=i+1
+do
+if F(sub(h\[i\],2,10))>0 then return TEXTDATES(sub(h\[i\],2,10))
+endif
+endfor
+userok("Patient has no scheduled appointments")
+return ""}}{NA()}]
+[.bungapt4][{fn APTBUNG() {local h=getfield(APPTS_BY_STATUS("scheduled")," ","")
+userok(APPTS_BY_STATUS("scheduled"))
+return sub(h\[1\],3,10)}}{APTBUNG()}]
+[.bungapt5][{fn APTBUNG() {local h=getfield(APPTS_BY_STATUS("scheduled")," ","")
+userok(APPTS_BY_STATUS("scheduled"))
+return h\[4\]}}{APTBUNG()}]
+[.bungapt6][{fn F() {local d=str(._TODAYSDATE),c=getarg(1)
+if c==d then 
+if useryesno("Has patient been seen yet today?")="No" then return 1
+endif
+endif
+return DURATIONDAYS(d,c)}}
+{fn NA() {local i,h=getfield(APPTS_BY_STATUS("scheduled"),"\\r","")
+for i=2, i<(size(h)+1), i=i+1
+do
+if F(sub(h\[i\],2,10))>0 then return sub(h\[i\],2,10)
+endif
+endfor
+userok("Patient has no scheduled appointments")
+return ""}}{NA()}]
+[.bungb][{if PATIENT.SEX == "F" then
+	if OBSANY("BONE DENSITY")=="" then "None on Record"
+	endif
+else ""
+ endif}]
+[.bungbp1][{fn fcn_sepval() {local ray=getfield(getarg(1),"\\n") j=getarg(2)
+return ray\[j\]
+}}{fn fcn_getval() {local o=getarg(1),n=getarg(2),a,x,r
+a=getfield(LIST_OBS(o,"pencil","list","valuedate"),"\\r")
+x=match(a\[n\],1,"(")
+r=remove(a\[n\],x)+"\\n"+sub(a\[n\],x+1,10)
+return r}}{fcn_sepval(fcn_getval("BP SYSTOLIC",1),1)}]
+[.bungbp1date][{fn fcn_sepval() {local ray=getfield(getarg(1),"\\n") j=getarg(2)
+return ray\[j\]
+}}{fn fcn_getval() {local o=getarg(1),n=getarg(2),a,x,r
+a=getfield(LIST_OBS(o,"pencil","list","valuedate"),"\\r")
+x=match(a\[n\],1,"(")
+r=remove(a\[n\],x)+"\\n"+sub(a\[n\],x+1,10)
+return r}}{fcn_sepval(fcn_getval("BP SYSTOLIC",1),2)}]
+[.bungbp2][{fn fcn_sepval() {local ray=getfield(getarg(1),"\\n") j=getarg(2)
+return ray\[j\]
+}}{fn fcn_getval() {local o=getarg(1),n=getarg(2),a,x,r
+a=getfield(LIST_OBS(o,"pencil","list","valuedate"),"\\r")
+x=match(a\[n\],1,"(")
+r=remove(a\[n\],x)+"\\n"+sub(a\[n\],x+1,10)
+return r}}{fcn_getval("BP SYSTOLIC",2)}]
+[.bungbp2date][{fn fcn_sepval() {local ray=getfield(getarg(1),"\\n") j=getarg(2)
+return ray\[j\]
+}}{fn fcn_getval() {local o=getarg(1),n=getarg(2),a,x,r
+a=getfield(LIST_OBS(o,"pencil","list","valuedate"),"\\r")
+x=match(a\[n\],1,"(")
+r=remove(a\[n\],x)+"\\n"+sub(a\[n\],x+1,10)
+return r}}{fcn_sepval(fcn_getval("BP SYSTOLIC",2),2)}]
+[.bungbung][{fn BUNGBUNG() {local desc
+desc="bung bung" 
+MEL_ADD_ORDER("S","In-House Services/Tests (WHC)","Strep, Rapid - In House","","ICD-462",desc,"","","N")}}{BUNGBUNG()}
+]
+[.bungccc][{ccc_Adult_GEN_PE()}]
+[.bungchange][{OBS_LIST_CHANGES()}]
+[.bungcode][{fn GP() {local h,i,c="",d="",f
+h=getfield(PROB_AFTER("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+c=c+sub(h\[i\]\[3\],5,3)+", "
+endfor
+return c}}{match(GP(),"272")}]
+[.bungcryo][{fn C() {local c="0",d="Wart,viral",p="17110 - Destruction warts/benign lesions; up to 14 lesions**",y="Dermatology"
+if useryesno("Genital?")="Yes" then
+c="1"
+d="Genital wart"
+y="Misc"
+if PATIENT.SEX == "M" then
+p="54056 - Destruction of lesion(s), penis, simple; cryosurgery**"
+else p="56501 - Destruction of lesion(s), vulva; simple**"
+endif
+endif
+MEL_ADD_ORDER("S","Procedures - "+y,p,"","ICD-078.1"+c,d,"","","",USER.LOGINNAME)
+return ""}}{C()}]
+[.bungcryoord][{fn O() {local n=getarg(1),p=getarg(2)
+MEL_ADD_ORDER("S","Procedures - Dermatology","1700"+n+" - Destruction premalignant lesions/actinic keratoses; "+p+"**","","ICD-702.0","Actinic kerratosis","","","",USER.LOGINNAME)}}
+{fn C() {O("0","1st lesion")
+O("3","2-14 lesions, EACH")}}{C()}]
+[.bungctest][{fn ctest() {local a=PATIENT_AGE(),t=""
+cond
+case a<10 t="under 10"
+case a<20 t="teen"
+case a<30 t="twenty"
+case a<40 t="thirty"
+case a<50 t="forty"
+case a<60 t="fifty"
+case a<70 t="sixty"
+case a<80 t="seventy"
+endcond
+return t}}{ctest()}]
+[.bungdate][{DOCUMENT.CLINICALDATE}]
+[.bunge][{fn E3() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS",
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+userok(d)
+endfor
+f=sub(c,5,3)
+if(((f>299)and(f<315))or(f=278)),
+if((f>310)or(f<307)),
+if(useryesno("Med monitoring?")="Yes"),
+c="ICD-V58.83|"+c
+d="Medication monitoring|"+d
+MEL_ADD_ORDER("S","E&M Services (WHC)","Ofc Vst, Est Level III","",c,d,"","","",USER.LOGINNAME)
+}}{E3()}]
+[.bungerx][{fn R() {
+if match(INS_PLAN("P"),1,"Medicare")>0 then
+MEL_ADD_ORDER("S","Reports/Forms/Legal Srvcs/Copies","G8553 - 1 or more prescriptions transmitted by eRx system"
+,"","","","","",USER.LOGINNAME)
+endif
+}}{R()}]
+[.bungfa][{fn FA() {local n,o,i=1
+n=array("Essence  (3384)","CHPW - M (3257)","Group He (789)","Regence  (2935)","Sierra O (3138)")
+o=array("90471 - Imm Admin, 1st vaccine **","G0008 - Admin Influenza Vaccine-Medicare**")
+if match(n,INS_PLAN("P"))>0,i=2
+if match(INS_PLAN("P"),1,"Medicare")>0,i=2
+MEL_ADD_ORDER("S","Immunizations/Vaccines",o\[i\],"","","","","",USER.LOGINNAME)
+return ""}}{FA()}]
+[.bungflu][{fn F(){local s,j=1,a=PATIENT._AGEINMONTHS
+s=array("90656 - Flu Vaccine, PRESERVATIVE FREE, OLDER than 36 months**","90658 - Flu Vaccine, older than 3 y/o**","90655 - Flu Vaccine, PRESERVATIVE FREE, 6 months-35 months**")
+if match(n,INS_PLAN("P"))>0, i=2
+if a<228,j=2
+if a<36,j=3
+if a<6 then
+userok("Patient younger than 6 month flu shot not ordered")
+return ""
+endif
+MEL_ADD_ORDER("S","Immunizations/Vaccines",s\[j\],"","","","","",USER.LOGINNAME)
+return ".fluadmin"}}{F()}]
+[.bunghome][{fn homer() {local ph=PATIENT.HOMELOCATIONNAME,uh=USER.HOMELOCATIONNAME,eq=""
+if match(ph,uh)>0 then eq="Match"
+else eq="Mismatch"
+endif
+userok ("Patient: "+ph+"\\n"+"User: "+uh+"\\n"+eq)
+return ""}}{homer()}]
+[.bungins][{INSERT_FORM_COMP("Enterprise\\CCC","CPOE A&P-Addendum-CCC")}]
+[.bunginsure][{fn INS_BUNG() {userok(INS_PLAN("P"))
+return ""}}{INS_BUNG()}]
+[.bunginsure2][{fn INS_BUNG() {return "xxx"+INS_PLAN("P")+"xxx"}}{INS_BUNG()}]
+[.bungit][{fn BUNG() {local h i x=2 f r=""
+h=getfield(ORDERS_AFTER("delimited","S"),"|","")
+for i=1,i<(size(h)+1),i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,5)="94664" then 
+x=0
+endif
+endfor
+return x}}{BUNG()}]
+[.bungitall][{fn bungitall() {local p=getarg(1),a=""
+cond
+case p="A" a="1|2|3"
+case p="B" a="1|2|"
+endcond
+return a}
+}{fn allitbung(){local ar=getfield(str(bungitall("A")),"|","") br=getfield(str(bungitall("B")),"|","")
+userok(ar\[3\]+"\\n"+br\[3\])
+return ""}}{allitbung()}]
+[.bungl][{fn L() {local o=getarg(1),n=getarg(2),a
+a=getfield(LIST_OBS(o,"pencil","comma","valudate"))
+userok(str(a))
+return a\[n\]}}{L("BP SYSTOLIC",1)}]
+[.bungl2][{fn L() {local o=getarg(1),n=getarg(2),a
+a=getfield(LIST_OBS(o,"pencil","list","valuedate"),"\\r")
+userok(str(a))
+return a\[n\]}}{L("BP SYSTOLIC",2)}]
+[.bungl2a][{fn L() {local o=getarg(1),n=getarg(2),a,x,r
+a=getfield(LIST_OBS(o,"pencil","list","valuedate"),"\\r")
+x=match(a\[n\],1,"(")
+r=remove(a\[n\],x)+"\\n"+sub(a\[n\],x+1,10)
+return r}}{L("BP SYSTOLIC",2)}]
+[.bungmedch][{MED_LIST_CHANGES('delimited')} ]
+[.bungmedr][{MEDS_REMOVED()}]
+[.bungna][{fn F() {local d=str(._TODAYSDATE),c=getarg(1)
+if c==d then 
+if useryesno("Has patient been seen yet today?")="No" then return 1
+endif
+endif
+return DURATIONDAYS(d,c)}}
+{fn NA() {local i,h=getfield(APPTS_BY_STATUS("scheduled"),"\\r","")
+for i=2, i<(size(h)+1), i=i+1
+do
+if F(sub(h\[i\],2,10))>0 then return sub(h\[i\],2,10)
+endif
+endfor
+userok("Patient has no scheduled appointments")
+return ""}}{NA()}]
+[.bungname][{USER.LOGINNAME}]
+[.bungnew][{INSERT_TEXT_COMP("V:\\\\","\\test.txt")}]
+[.bungo][{userok(ORD_BY_STATUS("C"))}]
+[.bungob][{fn OBV() {local h,i,c="",d="",f
+h=getfield(PROB_AFTER("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[3\],5,3)="V22" then 
+c=c+h\[i\]\[3\]+"|"
+d=d+h\[i\]\[2\]+"|"
+endif
+if sub(h\[i\]\[3\],5,3)="V23" then 
+c=c+h\[i\]\[3\]+"|"
+d=d+h\[i\]\[2\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","OB Visit","",c,d,"","","",USER.LOGINNAME)
+return ""}}{OBV()}]
+[.bungobed][{fn obed() {local a=ccc_preg_ary(),d=a\[2\],t=""
+cond
+case d<81 t="8"
+case d<105 t="12"
+case d<133 t="16"
+case d<161 t="20"
+case d<189 t="24"
+case d<203 t="28"
+case d<217 t="30"
+case d<231 t="32"
+case d<245 t="34"
+case d<257 t="36"
+case d<264 t="37"
+case d<271 t="38"
+case d<278 t="39"
+case d<285 t="40"
+case d>284 t="41"
+endcond
+userok(t)
+return ""}}{obed()}]
+[.bungobed2][{fcn_ob_ed()}]
+[.bungobs][{OBS_LIST_CHANGES()}]
+[.bungord][{ORDER_CUST_LIST('Imms - 36 months to 19 years')}]
+[.bungp][{fn P() {local x=getarg(1)
+return ADDDATES(str(._TODAYSDATE),"0",str(x),"0")}}
+{P(3)}]
+[.bungpap][{fn fut_pap() {local n=getarg(1)
+OBSNOW("Pap Due", ADDDATES(str(._TODAYSDATE),n,"0","0"))
+return ""}}{fut_pap("2")}]
+[.bungphone][{fn ph(){local p=getarg(1),a=""
+cond
+case p="John W Raduege MD" a=array("(360)671-3345|(360)715-2448")
+case p="Mary J Swanson MD" a=array("(360)671-3345|(360)715-2448")
+case p="Anneliese H Floyd MD" a=array("(360)671-3345|(360)715-2448")
+case p="April K Wakefield-Pagels MD" a=array("(360)671-3345|(360)715-2448")
+case p<>"" userok("Not found") a=array("    |    ")
+endcond
+return a}}
+{fn phfmt() {local ar=""
+ar=getfield(str(ph(DOCUMENT.PROVIDER)),"|","")
+return ar\[1\]}}{phfmt()}]
+[.bungpls][{fn P() {local a=PATIENT_AGE()
+if (a<16),return "Please let the patient's parents know that",return "Please let the patient know that"}}{P()}]
+[.bungpreg][{str(ccc_preg_ary())}]
+[.bungpreg1][{fn bp() {local a=ccc_preg_ary()
+if a\[2\]>258 then userok("Term")
+else
+userok("Preterm")
+endif
+return ""}}{bp()}]
+[.bungprob][{PROB_AFTER("delimited")}]
+[.bungprov][{DOCUMENT.PROVIDER}]
+[.bungrecall][{fn R() {
+MEL_SEND_FLAG("Flag","jwraduege","N",str(._TODAYSDATE),"Recall entered","Recall entered in today's note","Update","")
+return ""}}{R()}Sent to recall desktop
+Ordering Provider:  {PATIENT.RESPPROVID}
+Time to be done:  
+Labs or other testing include:  
+ICD-9 code:
+Visit to follow testing:  ]
+[.bungsert][{fn bungsert() {DOCUMENT.TEMP_359659547_417_4509116="Bung!"}}{bungsert()}]
+[.bungsert2][{fn bungsert2() {DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+"\\nBung!"
+return ""}}{bungsert2()}]
+[.bungshow][{fn BS() {userok("1)"+DOCUMENT.TEMP_CCC_PI_MLEF)
+return ""}}{BS()}]
+[.bungtd][{size(str(LASTOBSDATE("TD BOOSTER")))>0}]
+[.bungtest][{fn BUNGTEST(){MEL_ADD_ORDER("S","In-House Services/Tests (WHC)","Strep, Rapid - In House","","ICD-462","Pharyngitis, acute","","","N")}}{BUNGTEST()}]
+[.bungtit][{fn T() {local s,i,n=getarg(1)
+s="\\tDates\\t\\t\\t\\tAM\\tnoon\\tPM\\n"
+for i=1, i<((6*n)+1) , i=i+1
+do
+cond
+case (mod(i,n)=1) s=s+"\\t"+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+case i=6*n s=s+" on\\t\\t\\t2\\t2\\t2\\n"
+case (mod(i,n)=0) s=s+" to "+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+cond 
+case i=n s=s+"\\t\\t0\\t0\\t1\\n"
+case i=2*n s=s+"\\t\\t1\\t0\\t1\\n"
+case i=3*n s=s+"\\t\\t1\\t1\\t1\\n"
+case i=4*n s=s+"\\t\\t1\\t1\\t2\\n"
+case i=5*n s=s+"\\t\\t2\\t1\\t2\\n"
+endcond
+endcond
+endfor
+return s}}{T(3)}]
+[.bungtxt][{fn BUNG() {return "xxx\\x08"}}{BUNG()}]
+[.bungwt][{ fn DOSE() { LOCAL wt
+wt = (OBSANY("Weight")/2.2)
+return wt }}{ DOSE() }]
+[.buri][Discussed symptomatic treatment with rest, tylenol, fluids, nasal saline and suctioning.  Mom will let us know if pt develops any new symptoms or is not improving.]
+[.buritest][ Discussed symptomatic treatment with rest, tylenol, fluids, nasal saline and suctioning.  {INITIALCAP(RP())} will let us know if patient develops any new symptoms or is not improving.]
+[.bv][Will treat the patient with metrogel vaginal.  She will let us know if she is not improving.  Warned the patient about the potential for interaction with alcohol. ]
+[.bx][PROCEDURE NOTE (BIOPSY):
+.risk
+.vconsent
+.betadine
+.shave
+.wound ]
+[.callback][Attempted to return call.  Left message asking patiet to call me back.  {USER.REALNAME} {DATETIMESTAMP()}]
+[.candida][Risks (including bleeding, infection and scaring), benefits, and alternatives were discussed. Verbal informed consent obtained. The wart was prepped in a sterile manner.  0.3 cc of 1:1000 candida allergenic extract was diluted to 1cc with 2% lidocaine without epinephrine.  1 cc of this mixture was infused into the base of the wart and the wart was repeatedly stabbed witht the same needle.  The area was cleansed and dressed with bacitracin and a band-aid.  Patient will return in 3 weeks time for retreatment.]
+[.cap][capillary refill < 2 seconds]
+[.carlos][Carlos Montiel, M.D.]
+[.cefzil][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(30,250,5,2)}]
+[.cerumen][Risks, benefits and alternatives of irrigation discussed with the patient.  Ear was irrigated clear.  Discussed avoidance of q-tips and methods for keeping the ear clear including letting the shower run into the ear followed by drying the ear either with a blow dryer or with a 50/50 mixture of rubbing alcohol and white vinegar, 3-4 drops in each ear after getting out of the shower. ]
+[.cerumenproc][{INSERT_TEXT_COMP("Enterprise\\FCN\\Individual Docs", "Global ear wax")}]
+[.chantinst][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ".chantinst2"}}{
+PI("Start the chantix with the starting month pack.
+For the first 3 days you will take a small dose once a day.
+For the next 4 days you will take a small dose twice a day.
+You will then go up to the full dose twice a day. 
+Watch for side effects of nausea, vivid dreams or changes in your mood.")}]
+[.chantinst2][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("Call me if any of the side effects are significant or bothersome. 
+After you finish the starting month pack, fill the continuing month pack.
+Continue on these for two to five more months.  
+People who took the chantix for six months total were more likely to quit permanently than people who used it for a shorter time. ")}]
+[.chantix][Discussed smoking cessation with the patient.   Discussed options for helping {If PATIENT.SEX == "M" , "him", if PATIENT.SEX == "F", "her", if PATIENT.SEX == "", "the patient" } with quitting.  {If PATIENT.SEX == "M" , "He", if PATIENT.SEX == "F", "She", if PATIENT.SEX == "", "Patient" } would like to try chantix.   Discussed risk of possible side effects including serious mood changes.   Discussed how to take the medication and how long to continue on the medication.   .chantrx]
+[.chantrx][{fn CHANT() {local d
+d=str(._TODAYSDATE)
+MEL_ADD_MEDICATION("CHANTIX STARTER MONTH PAK","0.5 mg by mouth once a day for three days, then 0.5 mg twice a day for four days, then 1 mg twice a day",d,"145940",ADDDATES(d,"0","1","0"),"1 pack","0")
+MEL_ADD_MEDICATION("CHANTIX CONTINUING MONTH PAK","one pill by mouth twice a day for five months after finishing starter pack",ADDDATES(d,"0","1","1"),"120186",ADDDATES(d,"0","6","1"),"1 pack","4")
+return ".chantinst" }}{CHANT()}]
+[.chol][{"Patient's most recent fasting lipid profile:\\n\\tTotal Cholesterol:\\t"+OBSANY("CHOLESTEROL")+"\\t(Goal < 200)\\n\\tTriglycerides:\\t\\t"+OBSANY("TRIGLYCERIDE")+"\\t(Goal < 150)\\n\\tHDL (Good cholesterol):\\t"+OBSANY("HDL")+"\\t(Goal > 40)\\n\\tLDL (Bad cholesterol):\\t"+OBSANY("LDL")+"\\t(Goal < 100)"}]
+[.cin1][Discussed the nature of the problem with the patient.  Discussed that 50% of the time this will resolve without treatment.  Discussed that 15% of the time it will progress on the CIN II and that CIN II will progress to cancer without treatment.   Recommended that we repeat a pap smear in six months and a colposcopy in one year.  We will repeat the colposcopy sooner if her six month pap smear is worse than her previous pap.]
+[.circ][Risks (including bleeding, infection, undesireable cosmetic result, and difficulties with urination), benefits, and alternatives were discussed.   Explained that the procedure is done for cultural and not medical reasons.   Informed consent was obtained.   Genital exam is normal.   Patient was positioned on the circumstraint and genital area was prepped with betadine.   Dorsal penile block was performed with 0.4 mL of 1% lidocaine without epinephrine x 2 injections.  .circ2]
+[.circ2][Patient was then draped in a sterile fashion.   Circumcision performed using 1.3 gomco clamp in the usual fashion with a good cosmetic result.   Area dressed with vaseline and vaseline gauze.   Patient tolerated procedure well.   Estimated blood loss was < 1 cc.   Parents instructed in wound care and post-circumcision instruction sheet was reviewed with the parents.  They will call or come in if they have any concerns.   .circ3  ]
+[.circ3][{fn CIRC() {MEL_ADD_PROBLEM('MDXOF','Circumcision','ICD-V50.2',str(._TODAYSDATE),ADDDATES(str(._TODAYSDATE),"0","1","0"))
+MEL_ADD_ORDER("S","Procedures - Misc","54150 - Circumcision w/clamp or device w/regional dorsal penile or ring block**","","ICD-V50.2","Circumcision","","","")
+return ".circ4"}}{CIRC()}]
+[.circ4][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ".circ5"}}{
+PI("It is ok to give him some liquid tylenol 1/4 teaspoon by mouth every four hours as needed for discomfort. 
+Let us know if there are any problems with bleeding or signs of infection (increasing redness, increasing pain, increasing swelling or draining pus).")}]
+[.circ5][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("Apply vaseline to the front of the inside of the diaper to keep the head of the penis from sticking to the diaper.
+Keep doing this until the head of the penis looks like normal skin. ")}]
+[.circinst][It is ok to give him some liquid tylenol 1/4 teaspoon by mouth every four hours as needed for discomfort. 
+Let us know if there are any problems with bleeding or signs of infection (increasing redness, increasing pain, increasing swelling or draining pus).
+Apply vaseline to the front of the inside of the diaper to keep the head of the penis from sticking to the diaper.
+Keep doing this until the head of the penis looks like normal skin. ]
+[.cjrx][{fn CJ() {local d=str(._TODAYSDATE) e=ADDDATES(d,"0","0","14")
+if useryesno("Add med?")="Yes",MEL_ADD_MEDICATION("GENTAMICIN SULFATE","OPHTHALMIC DROPS: two drops in the affected eye(s) four times a day until two days after the redness clears",d,"9163",e,"1 bottle","0")
+return ""}}{CJ()}]
+[.codebung][{fn FINDCODE(){local x,i,A,f,g
+x=R2D(PROB_AFTER("delimited"))
+if (getarg(1)="DM")then
+f="250.0"
+g="250"
+for i=1,i<(size(x)+1),i=i+1 do
+if (sub(x\[i\]\[3\],5,5)=f) then
+A=array(x\[i\]\[3\],x\[i\]\[2\])
+return A
+endif
+endfor
+endif
+if (getarg(1)="HL")then
+g="272"
+endif
+if (getarg(1)="HTN")then
+g="401"
+endif
+for i=1,i<(size(x)+1),i=i+1 do
+if (sub(x\[i\]\[3\],5,3)=g) then
+A=array(x\[i\]\[3\],x\[i\]\[2\])
+return A
+endif
+endfor
+return "0"
+}}{FINDCODE("HTN")}]
+[.codelu][{fn LU() {userok(PROB_AFTER("list"))
+return ""}}{LU()}]
+[.coloncall][Received a notice from NWGI that they were unable to get a hold of the patient to get {if PATIENT.SEX="F" then return "her" else return "him" endif} set up for a colonoscopy.   Please call the patient and let {if PATIENT.SEX="F" then return "her" else return "him" endif} know that we feel that it is very important that {if PATIENT.SEX="F" then return "she" else return "he" endif} have this screening and find out if there is anything we can do to help facilitate this.   ]
+[.condonletter][Kenneth G. Condon, M.D.
+N4W22370 Bluemound Road #202
+Waukesha, WI 53186
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.conjunctivitis][Will treat with Gentamycin opthalmic drops, two drops in the affected eye four tines a day until two days after the redness clears. Instructed to call or come in if not improving in 2-3 days. Discussed the importance of good hand washing to prevent spread.  .cjrx]
+[.consent][Informed consent was obtained.]
+[.cortinst][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ".cortinst2"}}{
+PI("The numbning medicine will be effective for about an hour.
+When it wears off the joint may feel worse before it feels better. 
+If it is feeling worse a heating pad can help but don't turn a heating pad up past medium or fall asleep with the heating pad on because you can burn yourself. ")}]
+[.cortinst2][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("It will take between 3 days to a week to see improvement from the steroid injection. 
+Call us in one week to let us know how it worked. ")}]
+[.cpat][please call patient]
+[.cpm][This is under good control.  Will continue the current regimen.]
+[.cpoe][{INSERT_FORM_COMP("Enterprise\\CCC","CPOE A&P-CCC")}]
+[.croup][Discussed the nature of the problem with parent.  Discussed that it is usually worse at night.  Discussed symptomatic treatment with warm moist air or cold night air.  Instructed how to watch for retractions and to bring the patient in for evaluation if that was noted.  Discussed tylenol, adequate hydration, nasal suctioning, etc.  Parent will call if any problems, worsening or not improving over the next 3-4 days.]
+[.crx][please call in prescription]
+[.cryo][Risks benefits and alternatives of cryotherapy were discussed with the patient.  Verbal informed consent was obtained.  Lesion was frozen times two with liquid nitrogen.  After-care instructions were discussed.  Patient will return in 2 weeks time for retreatment if needed.  .cryoord]
+[.cryo2][Risks benefits and alternatives of cryotherapy were discussed with the patient.  Verbal informed consent was obtained.  All abovementioned lesions were frozen times two with liquid nitrogen.  After-care instructions were discussed.  Patient will return in 2 weeks time for retreatment if needed.  .cryoord]
+[.cryo2ak][PROCEDURE NOTE (CRYOTHERAPY):
+Risks benefits and alternatives of cryotherapy discussed with the patient. Verbal informed consent was obtained. All lesions were frozen times two with liquid nitrogen.  After-care instructions were discussed. Patient will return if the lesions do not completely resolve.  .cryo2akord]
+[.cryo2akord][{fn O() {local n=getarg(1),p=getarg(2)
+MEL_ADD_ORDER("S","Procedures - Dermatology","1700"+n+" - Destruction premalignant lesions/actinic keratoses; "+p+"**","","ICD-702.0","Actinic kerratosis","","","")}}
+{fn C() {O("0","1st lesion")
+O("3","2-14 lesions, EACH")
+return ""}}{C()}]
+[.cryo2inst][The spots that we froze will blister.   
+Try not to pop the blisters if you can avoid it. 
+If any do pop then put antibiotic ointment and a bandaid on them so they don't get infected. 
+They will turn black and crusty and heal up over 2-3 weeks.  
+Let me know if any of the spots do not resolve after they heal. ]
+[.cryoak][{fn C() {MEL_ADD_ORDER("S","Procedures - Dermatology","17000 - Destruction premalignant lesions/actinic keratoses; 1st lesion**","","ICD-702.0","Actinic kerratosis","","","")
+return "PROCEDURE NOTE (CRYOTHERAPY):\\nRisks benefits and alternatives of cryotherapy discussed with the patient. Verbal informed consent was obtained. Lesion was frozen times two with liquid nitrogen.  After-care instructions were discussed. Patient will return if the lesion does not completely resolve."}}{C()}]
+[.cryoinst][The spot that we froze will blister.   
+Try not to pop the blister if you can avoid it. 
+If it does pop then put antibiotic ointment and a bandaid on it so it doesn't get infected. 
+It will turn black and crusty and heal up over 2-3 weeks.  
+Let me know if it does not resolve after it heals. ]
+[.cryoord][{fn C() {local c="0",d="Wart,viral",p="17110 - Destruction warts/benign lesions; up to 14 lesions**",y="Dermatology"
+if useryesno("Genital?")="Yes" then
+c="1"
+d="Genital wart"
+y="Misc"
+if PATIENT.SEX == "M" then
+p="54056 - Destruction of lesion(s), penis, simple; cryosurgery**"
+else p="56501 - Destruction of lesion(s), vulva; simple**"
+endif
+endif
+MEL_ADD_ORDER("S","Procedures - "+y,p,"","ICD-078.1"+c,d,"","","")
+return ""}}{C()}]
+[.ctsinj1][Risks including bleeding, infection, fat atrophy, nerve injury and recurrence of the CTS were discussed as well as anticipated benefits and alternatives.  Verbal informed consent was obtained.  Wrist was prepped with betadine.  1cc of Kenalog 40mg/mL was drawn up in a syringe with 2cc of 1% lidocaine without epinephrine.  1cc was infused under the skin 1cm proximal to the palmar flexion crease on the unlar side of the palmaris longus tendon.    The patient then fully flexed the fingers into the palm and the]
+[.ctsinj2][needle was advanced until resistance was felt.  Wiggling the 4th and 5th fingers produced slight movement in the tip of the needle.  The patient then extended the fingers while gentle pressure was appled to the needle, carrying it into the carpal canal.  The patient had no electric shock sensation or paresthesias.  The remainder of the corticosteroid mixture was infused and the needle was withdrawn.  The area was cleansed and dressed with bacitracin and a band-aid.  ]
+[.ctsinj3][Discussed that the wrist and had will feel numb for the next 1-2 hrs and may feel worse before it feels better.  Patient will call me in one week to update me with how the wrist is feeling.  Patient tolerated procedure well.  .cortinst]
+[.d][{._TODAYSDATE}]
+[.dep][{INSERT_FORM_COMP("Enterprise\\WHC\\Depression","WHC Depression Screen")}]
+[.diaper][Discussed using a wet washcloth instead of wipes, making sure patient is completely dry with diaper changes, applying vaseline, and doing tap water soaks once or twice a day.  They should call if the rash is not improving over the next 3-4 days. ]
+[.diet][low-fat, low-cholesterol diet]
+[.diffuse][soft, mild diffuse tenderness, no guarding or rebound, normal bowel sounds, no masses, no hepatosplenomegaly or abdominal wall hernias]
+[.disc][Discussed the nature of the problem with the patient. ]
+[.dmf][{INSERT_FORM_COMP("Enterprise\\WHC\\Diabetes","WHC Diabetes Visit")}]
+[.dmq][Patient is here today for evaluation of diabetes.
+On insulin?
+Taking daily aspirin?
+Understands diet?
+Following diet?
+Any sensory loss?
+Doing self foot exams?
+Checking blood sugar?  
+	 How often?
+Hypoglycemic symptoms?
+	 sweats?
+	 confusion?
+	 weakness?
+Hyperglycemic symptoms?
+	 frequent urination?
+	 unusual thirst?
+	 blurred vision?
+Exercising regularly?
+	 How often?
+	 what type?]
+[.dn][{fn F() {local d=str(._TODAYSDATE),c=getarg(1)
+if c==d then 
+if useryesno("Has patient been seen yet today?")="No" then return 1
+endif
+endif
+return DURATIONDAYS(d,c)}}
+{fn NA() {local i,h=getfield(APPTS_BY_STATUS("scheduled"),"\\r","")
+for i=1, i<(size(h)+1), i=i+1
+do
+if F(sub(h\[i\],1,10))>0 then return sub(h\[i\],1,10)
+endif
+endfor
+userok("Patient has no scheduled appointments")
+return ""}}Will discuss with patient at upcoming appointment on {NA()}}.]
+[.door][{fn DOOR() {local j=0,A,fname,fhand,text
+text = "bung"
+fname = "V:/centtest.txt"
+fhand = FILEOPEN(fname, "r")
+if fhand <> NULL then
+	text = FILEREAD(fhand)
+	FILECLOSE(fhand)
+endif
+A=getfield(text,"|","")
+for j=1, j<(size(A)+1), j=j+1
+do
+userok(A(j))
+endfor}}{DOOR()}]
+[.door2][{fn DOOR() {local j=0,A,fname,fhand,text
+text = "bung"
+fname = "V:/centtest.txt"
+fhand = FILEOPEN(fname, "r")
+if fhand <> NULL then
+	text = FILEREAD(fhand)
+	FILECLOSE(fhand)
+endif
+A=getfield(text,"|","")
+for j=1, j<(size(A)+1), j=j+1
+do
+eval(A(j))}}{DOOR()}]
+[.dose][{ fn DOSE() { LOCAL wt mgkg mg vol dvd d res
+if getnargs()< 4 then return "error" endif
+mgkg = getarg(1)
+mg = getarg(2)
+vol = getarg(3)
+wt = (OBSANY("Weight")/2.2)
+d = wt * mgkg
+dvd = getarg(4)
+d = d / (24 / dvd)
+d = ( d * vol / mg )
+res = "take " + d + " mL by mouth every " + dvd + " hours"
+return res }}{ DOSE(40,250,5,8) }]
+[.doses][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(40,250,5,3)}]
+[.downtime][Patient visit occured during a computer downtime.   Visit entered into EMR from notes taken at the time of the visit. ]
+[.dup][{fn DUPB() {local h,i,j,c="",d="",f,ca="",da="",p,r=""
+h=getfield(PROB_AFTER("delimited"),"|","")
+for i=1,i<(size(h)+1),i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if (size(ca)<1) then ca=array(h\[i\]\[3\])
+else
+insert(ca,size(ca)+1,h\[i\]\[3\])
+endif
+if (size(da)<1) then da=array(h\[i\]\[2\])
+else
+insert(da,size(da)+1,h\[i\]\[2\])
+endif
+endfor
+for j=1,j<size(ca),j=j+1
+do
+p=match(ca,j+1,ca\[j\])
+if p>0 then r=r+da\[j\]+", "+ca\[j\]+"\\n"+da\[p\]+", "+ca\[p\]+"\\n"
+endif
+endfor
+userok(r)
+return ""}}{DUPB()} ]
+[.e3][{fn E3() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","99213 - Office Visit, Level 3 - EST Pt**","",c,d,"","","",USER.LOGINNAME)
+return ""}}{E3()}
+]
+[.ear][external ears normal,  TM's intact and clear with normal canals, ]
+[.ebp][Will have the patient check blood pressure once a week over the next month.  If systolic readings are consistantly 140 or higher or diastolic readings are 90 or higher, he will come in and we will discuss starting medication.  Discussed that weight loss and regular exercise can help lower blood pressure. ]
+[.eczema][Discussed appropriate skin care with avoiding long hot baths or showers, patting instead of rubbing dry, and use of emmolient creams immediately after drying. ]
+[.ee][no erythema or ecchymosis]
+[.efax][script will be faxed due to eprescribing restrictions]
+[.ekg][{INSERT_FORM_COMP("Enterprise\\WFPC\\Diagnostics","EKG INTERPRETATION")}]
+[.elimiterx][{fn SC() {local d=str(._TODAYSDATE) e=ADDDATES(d,"0","1","0")
+if useryesno("Add med?")="Yes",MEL_ADD_MEDICATION("ELIMITE","Apply from hairline to soles of feet before bed.  Wash off after eight to fourteen hours.",d,"7510",e,"60 g","0")
+return ""}}{SC()}]
+[.emf][{INSERT_FORM_COMP("Enterprise\\MedicaLogic\\Other","E&M Advisor")}]
+[.emorder][{INSERT_FORM_COMP("Enterprise\\WHC","WHC Office Visit Orders")}]
+[.endo][Risks (including bleeding, infection and perforation) benefits and alternatives of endometrial biopsy discussed.  Informed consent obtained.  Patient positioned, sterile speculum inserted and cervix visualized.  Cervix was prepped with betadine.  A tenaculum was placed to gain good control of the cervix.  Sound inserted and uterus sounded to  cm. .endo2]
+[.endo2][Sound was removed and pipelle was inserted without difficulty.  Plunger was pulled back and endometrium was sampled over 360 degrees.  Pipelle removed and sample sent to pathology.  Hemostasis was adequate.  Aftercare instructions discussed with the patient.  Will contact the patient when pathology results are back.  ]
+[.entletter][Moreland ENT
+1111 Delafield St.  Suite 102
+Waukesha, WI 53188
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.eomi][extra-ocular movements intact]
+[.epigastric][soft, mild epigastric tenderness, no guarding or rebound, normal bowel sounds, no masses, no hepatosplenomegaly or abdominal wall hernias]
+[.era][erythema]
+[.ers][erythematous]
+[.etd][Will treat symptomatically with ibuprofen.  Instructed to call if worsening pain or fever.  Will start patient on Flonase 2 sprays in each nostril once daily.  Sample sufficient for 2 weeks given to patient and instructed patient in use.  Patient will let us know if not improving over next 4-5 days.]
+[.ex?][{fn EX() {userok("Freq:\\t"+OBSANY("EXERCISE")+"\\nDuration:\\t"+OBSANY("EXERCISE TIM")+"\\nType\\t"+OBSANY("EXERCISE TYP"))
+return ""}}{EX()}]
+[.exe][external ears normal,]
+[.exercise][at least 30 minutes of regular exercise that elevates the heart rate at least three but preferably five times per week]
+[.exn][external nose normal,]
+[.eye][conjunctiva are not injected, pupils equal, round and reactive to light, discs are sharp and flat,  no a/v nicking, no hemorrhages, or exudates ]
+[.fast][You need to be fasting for 12 hours before the blood work.   The easiest way to do this is to not have anything except water after supper the night before and then come in early the next morning before eating breakfast.   ]
+[.fbs][{fn FBS() {local u,d,r
+u=str(USER.LOGINNAME)
+if (getnargs()>0)then
+d=ADDDATES(str(._TODAYSDATE),"0",str(getarg(1)),"0")
+r="have patient return fasting for a"
+else d=str(._TODAYSDATE)
+r="get a fasting"
+endif
+MEL_ADD_ORDER("T","Lab","Glucose, quantitative","","ICD-V77.1","Screening for diabetes","","","N",u,d)
+return "Will "+r+" blood sugar for screening."
+}}{FBS()}]
+[.fbsf][{fn FBS() {local u,d,r
+u=str(USER.LOGINNAME)
+if (getnargs()>0)then
+d=ADDDATES(str(._TODAYSDATE),"0",str(getarg(1)),"0")
+r="have patient return fasting for a"
+else d=str(._TODAYSDATE)
+r="get a fasting"
+endif
+MEL_ADD_ORDER("T","Lab","Glucose, quantitative","","ICD-V77.1","Screening for diabetes","","","N",u,d)
+return "Will "+r+" blood sugar for screening."
+}}{FBS(1)}]
+[.findid][{fn D() {local h,i,c=""
+h=getfield(MEDS_AFTER("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+c=c+h\[i\]\[1\]+" "+h\[i\]\[3\]+"\\n"
+endfor
+userok(str(c))
+return ""}}{D()}]
+[.flexarilinst][The cyclobenzaprine is a muscle relaxer.   Just take it as needed.   It can make you drowsy so don't drive after taking it.   
+The first time you take the cyclobenzaprine, just take 1/2 tablet, but you can take a whole pill if 1/2 isn't enough.   
+You will probably want to just take this at bedtime but you can take it as often as three times per day if needed.  ]
+[.flonase][Will try the patient on Flonase nasal spray.  Patient was instructed in propper use, two sprays in each nostril once daily.  Discussed that it will take 3-4 days to see significant improvement.   Patient will let us know how this works.]
+[.flonaseinst][Shake the nose spray well.
+Look down at your shoes and put the inhaler in your nose
+When you are going to spray it in the left side of your nose, hold it in your right hand.
+When you are going to spray it in the rightt side of your nose, hold it in your left hand.
+Spray and sniff at the same time.
+Do the first spray on the right side, then the first spray on the left side then the second spray on the right side and the second spray on the left side.   
+]
+[.flp][fasting lipid profile]
+[.flpr][fasting lipid profile with reflex LDL]
+[.flu][{fn FLU(){local r="Will give flu shot today.",t="Influenza, Preserve Free (",a="over 3 years",d=str(._TODAYSDATE),f=0,p=PATIENT_AGE()
+if (p<9) then
+if (p<3) then a="6-35 months" endif
+if (useryesno("First dose?")="Yes") then f=1 endif
+endif
+a=t+a+")  V04.81" 
+MEL_ADD_ORDER("S","Immunizations",a)
+if (f>0)then
+d=ADDDATES(d,"0","1","0")
+MEL_ADD_ORDER("S","Immunizations",a,"","","","","","N",str(USER.LOGINNAME),d)
+r=r+" Patient to return in 1 month for 2nd dose. .ic"
+endif
+return r}}{FLU()}]
+[.fluadmin][{fn FA() {local n,o,i=1
+n=array("Essence  (3384)","CHPW - M (3257)","Group He (789)","Regence  (2935)","Sierra O (3138)")
+o=array("90471 - Imm Admin, 1st vaccine **","G0008 - Admin Influenza Vaccine-Medicare**")
+if match(n,INS_PLAN("P"))>0,i=2
+if match(INS_PLAN("P"),1,"Medicare")>0,i=2
+MEL_ADD_ORDER("S","Immunizations/Vaccines",o\[i\],"","","","","",USER.LOGINNAME)
+return ""}}{FA()}]
+[.flubung][{MEL_ADD_ORDER("S","Immunizations","Influenza, Preserve Free (over 3 years)  V04.81")}]
+[.flushot][{fn F(){local s,j=1,a=PATIENT._AGEINMONTHS
+s=array("90656 - Flu Vaccine, PRESERVATIVE FREE, OLDER than 36 months**","90658 - Flu Vaccine, older than 3 y/o**","90655 - Flu Vaccine, PRESERVATIVE FREE, 6 months-35 months**")
+if a<228,j=2
+if a<36,j=3
+if a<6 then
+userok("Patient younger than 6 month flu shot not ordered")
+return ""
+endif
+MEL_ADD_ORDER("S","Immunizations/Vaccines",s\[j\],"","","","","",USER.LOGINNAME)
+return ".fluadmin"}}{F()}]
+[.flusx][This is viral so antibiotics will not help.  
+Take ibuprofen 600 mg (3 of the over-the-counter 200 mg pills) three times per day.   
+Take it with food so it doesn't upset your stomach. 
+Rest and push fluids.  
+Call me if you are having any shortness of breath, worsening fever, or pain in your face radiating into your teeth as those would make us worry that you are getting something else on top of it.   
+If you have any questions about these printed instructions, please contact our office.]
+[.flut][{fn FLUT(){local r="Will give flu shot today.",t="Influenza, Preserve Free (",a,d=str(._TODAYSDATE),f=0
+if (PATIENT_AGE() < 3) then
+a="6-35 months"
+if (useryesno("First dose?")="Yes") then f=1 endif
+else a="over 3 years"
+endif
+a=a+")  V04.81" 
+userok(a)
+MEL_ADD_ORDER("S","Immunizations",a)
+if (a="Influenza, Preserve Free (over 3 years)  V04.81") then userok("true")
+endif
+}}{FLUT()}]
+[.from][full range of motion]
+[.gastro][Discussed viral nature of illness as well as symptomatic management.  Will have the patient take frequent small sips of clear liquids at first.  When this is well tolerated, may advance to a BRAT diet.  When this goes well may advance to regular foods.  instructed patient to rest and call if not improving over the next 2-3 days.]
+[.gend][{fn GEND() {
+if getnargs()==1 then
+if PATIENT.SEX == "M" then 
+return "He"
+endif
+if PATIENT.SEX == "F" then 
+return "She"
+endif 
+if PATIENT.SEX == "" then
+return "Patient" 
+endif
+else
+if PATIENT.SEX == "M" then 
+return "he"
+endif
+if PATIENT.SEX == "F" then 
+return "she"
+endif 
+if PATIENT.SEX == "" then
+return "patient" 
+endif
+endif
+}}]
+[.gendp][{fn GENDP() {
+if getnargs()==1 then
+if PATIENT.SEX == "M" then 
+return "His"
+endif
+if PATIENT.SEX == "F" then 
+return "Her"
+endif 
+if PATIENT.SEX == "" then
+return "Patient's" 
+endif
+else
+if PATIENT.SEX == "M" then 
+return "his"
+endif
+if PATIENT.SEX == "F" then 
+return "her"
+endif 
+if PATIENT.SEX == "" then
+return "patient's" 
+endif
+endif
+}} ]
+[.gerd][Advised patient to avoid having anything to eat or drink for three hours before going to bed.  Advised elevating the head of the bed about six inches. ]
+[.ghmh][You will need to call yourself to the Group Health Behavioral Health Access Line at 1-888-287-2680.]
+[.giletter][Gastroenterology Specialists, S.C.
+1111 Delafield St.  Suite 216
+Waukesha, WI 53188
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.gorelickletter][Jeffrey Gorelick, M.D.
+721 American Avenue - Suite 411
+Waukesha, WI 53188
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.hdl][good cholesterol (HDL)]
+[.header][RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}
+
+
+
+To Whom It May Concern:]
+[.heartp][{OBSPREV("AUSCUL HEART")}]
+[.heatingpad][Cautioned patient not to turn a heating pad up past medium or to fall asleep with the heating pad on. ]
+[.hellobung][{fn HELLO() {local x="Hello World."
+if useryesno("Do it?")="Yes" then return x
+else return "Goodbye"
+endif }}{HELLO()}]
+[.hfm][Discussed the viral nature of the illness.  Discussed supportive care with tylenol and ibuprofen for fever and discomfort, liquids and rest.  Mom will let us know if the patient is not improving or having other symptoms. ]
+[.hilgemanletter][Alan Hilgeman, M.D.
+Medical Associates
+W180 N7950 Town Hall
+Menomonee Falls, WI   53051
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.hist][Above history reviewed. ]
+[.hm][HEALTH MAINTENANCE -  - John W. Raduege, MD]
+[.hmn][{fn HMN() {MEL_ADD_PROBLEM('DX OF','Health Maintenance','ICD-V70.0',str(._TODAYSDATE))
+return ""}}{HMN()}]
+[.hosp][No hospitalizations or surgeries]
+[.hs][at bedtime]
+[.ibuinst][Take 600 mg of ibuprofen (three of the over-the-counter 200mg pills) three times a day.   
+Take it with food so it doesn't upset your stomach. ]
+[.incision][fusiform incision was made removing the lesion to its entire visual extent.]
+[.include][.gend
+.gendp
+.lastmed
+.rp]
+[.induction][1. resident to place cervadil
+2. AROM when able
+3. POS labor when in labor
+4. if not labor by AM than pitocin induction per protocol.]
+[.induction+][1. resident to place cervadil
+2. AROM when able
+3. PCN G 5 million units IVPB when in labor, than 2.5 million units every 4 hour until delivery
+4. POS labor when in labor
+5. if not labor by AM than pitocin induction per protocol.]
+[.inductiongbs][1. resident to place cervadil
+2. AROM when able
+3. PCN G 5 million units IVPB when in labor, than 2.5 million units every 4 hour until delivery
+4. POS labor when in labor
+5. if not labor by AM than pitocin induction per protocol.]
+[.inhteach][{fn IT() {local h i x=2 f r=""
+h=getfield(ORDERS_AFTER("delimited","S"),"|","")
+for i=1,i<(size(h)+1),i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,5)="94664" then 
+x=0
+endif
+endfor
+if x<1,return r
+if useryesno("Inst?")="Yes",MEL_ADD_ORDER("S","Other Tests and Procedures","94664 - Demo to Patient on Utilzation of MDI Inhaler**","","","","","","",USER.LOGINNAME)
+return r}}{IT()}
+]
+[.irr][irregularly irregular rhythm]
+[.knee][no effusion, full range of motion, no medial or lateral joint line tenderness, medial and lateral collateral ligaments are intact, McMurray's and Lachman's are negative]
+[.kneeinj][Risks (including bleeding, infection, scar formation, and subcutaneous fat atrophy), benefits and alternatives discussed, verbal informed consent obtained.  Patient positioned and the area was prepped with bedadine.  Knee was approached medially.   Knee was injected with 2 mL of 40 mg/mL Kenalog and 8 mL of 1% lidocaine without epinephrine.   Injection site was cleansed and dressed with bacitracin and a bandaid.   Patient had good initial pain relief.   .kneeinj2]
+[.kneeinj2][Discussed that after the local anesthetic wears off the knee may feel worse before it feels better.   Discussed that a heating pad can help with this but the patient should not turn this up past medium and should not fall asleep with it on.   Patient should call me in one week to let me know how the injection worked.   .cortinst]
+[.koh][{fn KOH() {MEL_ADD_ORDER("S","In-House Services/Tests (WHC)","KOH - In House","","ICD-782.1","Rash","","","N")
+return ""}}{KOH()}]
+[.lastmed][{fn LAST_MED() {LOCAL list,i,med
+list=getfield(MEDS_NEW('list'),"\\r","")
+med=getfield(list\[(size(list)-1)\]," ","")
+return INITIALCAP(med\[1\]) 
+}}]
+[.ldl][bad cholesterol (LDL)]
+[.leglift][Every night before you go to bed, lie on the floor and slowly lift one leg and hold it up for a count of ten, then slowly lower it to the floor. 
+Repeat this with the other leg.
+Do this ten times on each side. 
+Let us know if you are not seeing significant improvement in the next two weeks.   If you are not seeing improvement, we will get you in to physical therapy.  ]
+[.lipidfu][{fn LFU() {local u,d1,d2,r,x 
+u=str(USER.LOGINNAME)
+x=FINDCODE("HL")
+if (getnargs()>0)then
+d2=ADDDATES(str(._TODAYSDATE),"0",str(getarg(1)),"0")
+d1=ADDDATES(str(d2),"0","0","-14")
+r="r btw "+TEXTDATES(d1)+" and "+TEXTDATES(d2)+" for"
+else d2=str(._TODAYSDATE)
+r="get a fasting"
+endif
+if (size(x)<2) then 
+userok("No lipid code")
+return ""
+else 
+MEL_ADD_ORDER("T","Lab","Lipid panel","",x\[1\],x\[2\],"","","N",u,d2)
+return "Will "+r+" lipid profile and ALT."
+endif
+}}{LFU(2)}]
+[.lipidfu2m][{fn LFU() {local u,e,d,r,x 
+u=str(USER.LOGINNAME)
+x=FINDCODE("HL")
+if (getnargs()>0)then
+d=ADDDATES(str(._TODAYSDATE),"0",str(getarg(1)),"0")
+e=ADDDATES(str(d),"0","0","-14")
+r="have patient return fasting between "+TEXTDATES(e)+" and "+TEXTDATES(d)+" for"
+else d=str(._TODAYSDATE)
+r="get a fasting"
+endif
+if (size(x)<2) then 
+userok("No lipid code")
+return ""
+else MEL_ADD_ORDER("T","Lab","Lipid panel","",x\[1\],x\[2\],"","","N",u,d)
+return "Will "+r+" lipid profile and ALT."
+endif
+}}{LFU(2)}]
+[.lipidsc][{fn LSCR() {local u,d,r
+u=str(USER.LOGINNAME)
+if (getnargs()>0)then
+d=ADDDATES(str(._TODAYSDATE),"0",str(getarg(1)),"0")
+r="have patient return fasting for a"
+else d=str(._TODAYSDATE)
+r="get a fasting"
+endif
+MEL_ADD_ORDER("T","Lab","Lipid panel","","ICD-V77.91","Screening for lipoid disorders","","","N",u,d)
+return "Will "+r+" lipid profile for screening."
+}}{LSCR()}]
+[.lipidscf][{fn LSCR() {local u,d,r
+u=str(USER.LOGINNAME)
+if (getnargs()>0)then
+d=ADDDATES(str(._TODAYSDATE),"0",str(getarg(1)),"0")
+r="have patient return fasting for a"
+else d=str(._TODAYSDATE)
+r="get a fasting"
+endif
+MEL_ADD_ORDER("T","Lab","Lipid panel","","ICD-V77.91","Screening for lipoid disorders","","","N",u,d)
+return "Will "+r+" lipid profile for screening."
+}}{LSCR(1)}]
+[.lle][in the left lower extremity]
+[.llq][soft, mild left lower quadrant tenderness, no guarding or rebound, normal bowel sounds, no masses, no hepatosplenomegaly or abdominal wall hernias]
+[.local][cc of lidocaine without epinephrine was infused into the area.  After adequate anesthesia was obtained, ]
+[.localwith][cc of lidocaine with epinephrine was infused into the area.  After adequate anesthesia was obtained, ]
+[.lue][in the left upper extremity]
+[.lung][normal respiratory effort without use of accessory muscles, clear to auscultation bilaterally]
+[.luq][soft, mild left upper quadrant tenderness, no guarding or rebound, normal bowel sounds, no masses, no hepatosplenomegaly or abdominal wall hernias]
+[.magic][magic paper scripts]
+[.mammo][We should get you in to see Mt. Baker Imaging for a mammogram.   Call 647-2422 to schedule this.   ]
+[.maskspacer][{fn MASKSPACER() {local x
+x = 1
+x = (MEL_ADD_ORDER("S","Supplies/DME","Aerochamber or Spacer with mask",""))
+if x=0 then 
+x = "Patient was provided with a spacer with mask and propper use was discussed."
+return x
+else
+userok("Order not entered")
+endif}}{MASKSPACER()}]
+[.mdi][Shake the inhaler well
+Hold inhaler out in front of your mouth (an empty toilet paper roll will give you the right distance)
+Take a deep breath and let it out
+As you take the next breath in press the inhaler to release the mist
+Breathe the mist in and hold your breath for a count of ten
+Wait one minute and go back to step one
+You can repeat this every four to six hours as needed]
+[.me][John W. Raduege, M.D.]
+[.medo][{UPDATE_MEDS()}]
+[.medtest][{getfield(MEDS_PRIOR('list'),"\\r","")}]
+[.medtest2][{getfield(MEDS_AFTER('list'),"\\r","")}]
+[.met][metabolic profile (kidney and liver function)]
+[.mmm][mucous membranes moist]
+[.mondlochletter][Victoria Mondloch, M.D.
+W62N225 Washington 
+Cedarburg, WI   53012
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}
+
+Dear Dr. Mondloch:]
+[.mrsa][1) Use mupirocin ointment applied to the front of the inside of the nose twice a day for five days
+
+2) Wash with phisoHex soap over entire body, scrubbing under nails with a nail brush every day for three weeks.
+
+3) Change towels, sheets, and bedclothes daily during the three weeks of soap treatment
+
+4) Clean razor thoroughly with alcohol daily
+
+5) Avoid picking nose
+
+6) Return for first culture of nose in 1 month]
+[.ms][Motor strength 5/5]
+[.naproxeninst][Take the naproxen on a regular schedule, twice a day.
+Take it with food so it doesn't upset your stomach.  ]
+[.nasal][Get nasal saline irrigator at pharmacy - Sinus Rinse - Neil Med
+Fill the bottle with lukewarm water (not hot or cold) that has been boiled and cooled.
+The irrigator comes with a couple of packets that contain salt and baking soda, disolve one of these in the bottle 
+Stand over the sink and look down into the sink
+Put the nozzle of the nasal irrigator bottle into one side of the nose and gently squeeze.
+Some of the water will come out the other side of the nose and some will come out your mouth
+.nasal2]
+[.nasal2][Do this at least two but preferably three to four times per day
+If you are on any prescription nose sprays use them  just after one of the irrigations
+After you run out of packets you can etiher buy more or mix up your own by combining 1 quart of water with 2 teaspoons of salt and 1 teaspoon of baking soda.   
+]
+[.nasonex][Will try the patient on Nasonex nasal spray.  Patient was given samples and instructed in its use, two sprays in each nostril once daily.  Patient will let us know how this works.]
+[.ncat][normocephalic, atraumatic]
+[.nephroletter][Nephrology Associates
+1111 Delafield St.  Suite 212
+Waukesha, WI 53188
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.neuroletter][Neurologic Associates of Waukesha, Ltd.
+1111 Delafield St.  Suite 105
+Waukesha, WI 53188
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.newmeds][{list=getfield(MEDS_NEW('list'),"\\r","")}]
+[.nip][Patient notified in person.]
+[.nlpap][ Please let the patient know that the pap smear and HPV test were both normal.   We will still need to see her for an annual exam each year but she will not need another pap smear for 3 years as long as she does not have any change in sexual partners.]
+[.nlt][Patient notified by letter.]
+[.not][numbness or tingling]
+[.notme][This was ordered by another provider who will be responsible for notifying the patient and following up on results. ]
+[.npat][please notify patient]
+[.nph][Patient notified by phone.]
+[.npt][Please notify patient that]
+[.nt][numbness and tingling]
+[.ntw][{fn NTW() {LOCAL o,t,tn,n,x,y,z,h
+n=getarg(1)
+o=array("o","t","th","f","fi","s","se")
+t=array("tn","ty","thy","fy","fiy","sy","sey")
+tn=array("ev","tv","thn","fn","fin","sn","sen")
+h=div(n,100)
+if h>0 then
+np=o\[h\]+" hundred"
+endif
+x=mod(n,100)
+y=div(x,10)
+z=mod(x,10)
+if (x>10 and x<20) then
+np = np+" "+tn\[z\]
+return np
+endif
+if x<10 then
+if z>0 then
+np = np+" "+o\[z\]
+return np
+endif
+endif
+if x>19 then
+np=np+" "+t\[y\]
+endif
+if z>0 then
+np=np+"-"+o\[z\]
+endif
+return np 
+}}{NTW(35)}]
+[.numprob][{fn NUM_PROB() {LOCAL list, i, pos, bullet
+list=getfield(PROB_PRIOR('list'),"\\r","")
+list\[1\] = "1) " + list\[1\]
+for i=2, i < size(list),i=i+1
+do 
+list\[i\] = "\\n" + i + ") " + remove(list\[i\],1,1)
+endfor
+return list
+}}{NUM_PROB()}]
+[.ob][
+______________________________
+{DATESTAMP()}
+.gest
+
+
+{ fn OB() { LOCAL text
+text = "Problems\\t\\t- none\\nPain/contractions\\t- normal\\nBleeding/discharge"
+text = text + "\\t- normal\\nDysuria  \\t\\t- none\\nSwelling\\t\\t- "
+text = text + "normal\\nNausea/vomitting\\t- normal\\nFetal movement  \\t- "
+text = text + "normal\\nVitamins\\t\\t- taking\\nHeadache/vision\\t- normal "
+return text }}{ OB() }
+
+{USER.REALNAME}
+______________________________]
+[.ob2][Delivering physician: Raduege
+Alternate physican: South
+Pediatricain: Raduege
+Feeding: 
+Anesthesia: 
+Circumcision:
+Post-partum contraception:]
+[.obinst][Call if you are having strong regular contractions that make you stop what you are doing to breath through them that are coming about every five minutes apart over an hour.   
+Also call if you are having any leaking fluids, either a big gush or a steady trickle that keeps dripping down your legs.  ]
+[.obletter][Moreland OB-GYN
+1111 Delafield St.  Suite 311
+Waukesha, WI 53188
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.obtest][
+______________________________
+{DATESTAMP()}
+.gest
+
+
+{ fn OB() { LOCAL text
+text = "Problems\\t\\t- none\\nPain/contractions\\t- normal\\nBleeding/discharge"
+text = text + "\\t- normal\\nDysuria  \\t\\t- none\\nSwelling\\t\\t- "
+text = text + "normal\\nNausea/vomitting\\t- normal\\nFetal movement  \\t- "
+text = text + "normal\\nVitamins\\t\\t- taking\\nHeadache/vision\\t- normal "
+return text }}{ OB() }
+
+{USER.REALNAME}
+______________________________]
+[.obv][{fn OBV() {local h,i,c="",d="",f
+h=getfield(PROB_AFTER("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[3\],5,3)="V22" then 
+c=c+h\[i\]\[3\]+"|"
+d=d+h\[i\]\[2\]+"|"
+endif
+if sub(h\[i\]\[3\],5,3)="V23" then 
+c=c+h\[i\]\[3\]+"|"
+d=d+h\[i\]\[2\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","OB Visit","",c,d,"","","")
+return ""}}{OBV()}]
+[.obv-broken][{fn OBV() {local h,i,c="",d="",f
+h=getfield(PROB_AFTER("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[3\],5,3)="V22" then 
+c=c+h\[i\]\[3\]+"|"
+d=d+h\[i\]\[2\]+"|"
+endif
+if sub(h\[i\]\[3\],5,3)="V23" then 
+c=c+h\[i\]\[3\]+"|"
+d=d+h\[i\]\[2\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","OB Visit","",c,d,"","","",USER.LOGINNAME)
+return ""}}{OBV()}]
+[.obv-nouser][{fn OBV() {local h,i,c="",d="",f
+h=getfield(PROB_AFTER("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[3\],5,3)="V22" then 
+c=c+h\[i\]\[3\]+"|"
+d=d+h\[i\]\[2\]+"|"
+endif
+if sub(h\[i\]\[3\],5,3)="V23" then 
+c=c+h\[i\]\[3\]+"|"
+d=d+h\[i\]\[2\]+"|"
+endif
+endfor
+MEL_ADD_ORDER("S","Office Visits/E&Ms","OB Visit","",c,d,"","","")
+return ""}}{OBV()}]
+[.ocp][Discussed oral contraceptive pills with the patient.  Risks, including the risk of potentially fatal blood clots, were discussed.  Discussed that risks of blood clots are markedly increased with smoking.  Discussed that OCP's do not protect against HIV or other STD's.  Discussed that pregnancy can occur with missing even one pill.  Discussed the need for using a backup form of contraception until the OCP's become effective. ]
+[.oe][Will put the patient on Cortisporin otic suspension 5 drops in the affected ear four times a day for five days.  Instructed patient to keep the ear dry until course complete.  Discussed prevention of future episodes by getting all the water out of the ear either with a blow dryer on the low setting or a 50/50 mixture of rubbing alcohol and white vinegar, 3-4 drops in each ear after showering or swimming to remove water.  .oerx]
+[.oerx][{fn OE() {local d=str(._TODAYSDATE) e=ADDDATES(d,"0","0","14")
+if useryesno("Add med?")="Yes",MEL_ADD_MEDICATION("CORTISPORIN","four to five drops in the affected ear(s) four times a day for five days",d,"5331",e,"1 bottle","0")
+return ""}}{OE()}]
+[.om][Will put the patient on Amoxicillin.  Discussed ibuprofen for pain control.  If patient is not improving over the next three days they will call to let us know.  They will bring the patient back in 3-4 weeks for an ear recheck.]
+[.omnicef][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(14,250,5,2)}]
+[.ophtholetter][Medical Eye Associates
+1111 Delafield St.  Suite 312
+Waukesha, WI 53188
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.ordbung][{ORD_BY_STATUS("C")}]
+[.ordertest][{INSERT_TEXT_COMP("Enterprise\\WHC","WHC Quicktext Address")}
+
+Patient Name:  {PATIENT.FIRSTNAME}  {PATIENT.LASTNAME}
+Patient DOB:  {PATIENT.DATEOFBIRTH}
+
+Order:                                         Diagnosis:
+--------                                         -------------
+
+
+{fn NP() {LOCAL list, i
+list=getfield(PROB_PRIOR('list'),"\\r","")
+list\[1\] = "1) "+list\[1\]
+for i=2, i < size(list),i=i+1
+do 
+list\[i\] = "\\n"+i+") "+remove(list\[i\],1,1)
+endfor
+return list
+}}{NP()}
+
+
+
+
+{USER.REALNAME}]
+[.ors][Will try rehyrdating the patient with oral rehydration solution.  Discussed with mom giving 5 cc of ORS every 5 minutes over the next several hrs.  If this goes well without vomiting, they can advance to 10 cc every 10 minutes and continue to increase the amount as tolerated.  When the patient is tolerating fluids well, they can advance to a BRAT diet and when that is well tolerated to regular food.  Discussed signs and symptoms of worsening dehydration.  If any of these occur mom will take patient to ER.]
+[.ortholetter][Orthopedic Associates of Wisconsin
+1111 Delafield St, Suite 120
+Waukesha, WI   53188
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.otc][over-the-counter]
+[.pap][{fn PAP() {local u,d
+u=str(USER.LOGINNAME)
+d=str(._TODAYSDATE)
+MEL_ADD_ORDER("T","Lab","Pap Smear (Thin Prep) with Reflex","","ICD-V72.31","Health maintenance with pap and pelvic","","","N",u,d)
+return "Will let patient know when pap smear result is back."
+}}{PAP()}]
+[.pap3][Please let the patient know that the pap smear and HPV test were both normal.   We still would like to see her once a year for a health maintenance visit but as long as there is no change in sexual partners we do not need to do another pap smear for 3 years.]
+[.paper][Please request the paper chart]
+[.partntw][{fn PNTW() {LOCAL n,x,y,z,h,np
+n=getarg(1)
+h=div(n,100)
+if h>0 then
+np=o\[h\]+" hundred"
+endif
+x=mod(n,100)
+y=div(x,10)
+z=mod(x,10)
+if (x>10 and x<20) then
+np = np+" "+tn\[z\]
+return np
+endif
+if x<10 then
+if z>0 then
+np = np+" "+o\[z\]
+return np
+endif
+endif
+if x>19 then
+np=np+" "+t\[y\]
+endif
+if z>0 then
+np=np+"-"+o\[z\]
+endif
+return np 
+}}{PNTW(231)}]
+[.pbogm][pale, boggy mucosa]
+[.peer][good peer relationships]
+[.perf][Call Performance Physical Therapy for an appointment at (360) 733-4008.   We will be submitting a referral through your insurance.  ]
+[.pfasciitis][Will start the patient on naprosyn on a scheduled basis.  Recommended heel cups and heel cord stretching exercises.  Patient will let me know if there is no improvement over the next two weeks.  If incomplete improvement will refer to podiatry.]
+[.pfinst][Take naproxen one pill twice a day with food on a regular schedule
+Every day before you walk and every night before you go to bed do the heel cord stretching exercises (stand away from the wall with your toes pointing toward the wall, let your body fall into the wall, hold that for a count of 10, do 10 repititions)
+Wear shoes with good arch support and use an over-the-counter arch support insert or heel cushion
+Ice bottom of heel using a frozen water bottle
+Call me if it is not improving over 2 weeks]
+[.pfti][Call (360) 788-6345 to schedule the pulmonary function testing up at the hospital.  ]
+[.phar][Most likely viral.  Will treat the patient symptomatically with rest, fluids, tylenol, ibuprofen and warm salt water gargles.  Patient will let us know if not improving over the next three to four days.  Sooner if worse.  Will send an overnight throat culture for backup of the quick strep. .pharinst]
+[.phar2][Most likely viral.  Will treat the patient symptomatically with rest, fluids, tylenol, ibuprofen and warm salt water gargles.  Patient will let us know if not improving over the next three to four days.  Sooner if worse.  Will send an overnight throat culture for backup of the quick strep. {MEL_ADD_ORDER("T","Lab","Culture, Beta Strep, Throat","","ICD-462","Pharyngitis, acute","","","N")}]
+[.phar3][{MEL_ADD_ORDER("T","Lab","Culture, Beta Strep, Throat","","ICD-462","Pharyngitis, acute","","","N")
+return "Most likely viral.  Will treat the patient symptomatically with rest, fluids, tylenol, ibuprofen and warm salt water gargles.  Patient will let us know if not improving over the next three to four days.  Sooner if worse.  Will send an overnight throat culture for backup of the quick strep. "}]
+[.pharinst][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ".pharinst2"}}{
+PI("The sore throat is most likely viral so antibiotics will not help. 
+Rest, fluids, tylenol and ibuprofen can help. 
+Take 600 mg of ibuprofen (three of the over-the-counter 200mg pills) three times a day.   
+Take it with food so it doesn't upset your stomach.  ")}]
+[.pharinst2][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("Do warm salt-water gargles (1/4 to 1/2 tsp of salt in 8 oz of warm water) three to four times per day.
+Let us know if you are not improving over the next 3-4 days, sooner if you are getting worse.  ")}]
+[.pharyngitis][Most likely viral.  Will treat the patient symptomatically with rest, fluids, tylenol, ibuprofen and warm salt water gargles.  Patient will let us know if not improving over the next three to four days.  Sooner if worse.  Will send an overnight throat culture for backup of the quick strep.]
+[.pls][{fn P() {local a=PATIENT_AGE()
+if (a<16),return "Please let the patient's parents know that",return "Please let the patient know that"}}{P()}]
+[.pnd][post-nasal drainage]
+[.podletter][Thomas Pietrocarlo, DPM
+2430-C N Grandview Blvd.
+Waukesha, WI, 53188
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.potassium][Discussed the need for eating potassium rich foods on a daily basis (including bananas, oranges, grapes and potatos).  ]
+[.pov][Problem Oriented Visit:
+
+CC:
+
+HPI:
+
+ROS: see the following elements in ROS form above:
+
+Physical exam:
+
+{INSERT_FORM_COMP("Enterprise\\CCC","CPOE A&P-Addendum-CCC")}]
+[.pp][pedal pulses intact bilaterally]
+[.pregnote][Patient is pregnant with EDC of{OBSANY("EDC")}.
+]
+[.prep][Area was prepped and draped in a sterile fashion. ]
+[.prep2][Areas were prepped and draped in a sterile fashion. ]
+[.prn][as needed]
+[.prob][{PROB_AFTER("list")}]
+[.probiotic][Trunature Digestive Probiotic
+Phillips Colon Health
+Culturelle
+Florastor]
+[.probo][{UPDATE_PROBLEMS()}]
+[.procorder][{INSERT_FORM_COMP("Enterprise\\WHC\\Procedures","WHC Procedure Orders")}]
+[.prohemorrhoid][{INSERT_TEXT_COMP("Enterprise\\FCN\\Individual Docs", "Wakefield Pagels hemorrhoid")}]
+[.prosebcyst][{INSERT_TEXT_COMP("Enterprise\\FCN\\Individual Docs", "Wakefield Pagels seb cyst")}]
+[.psa][{fn PSA() {local u,d
+u=str(USER.LOGINNAME)
+d=str(._TODAYSDATE)
+MEL_ADD_ORDER("T","Lab","PSA, Total","","ICD-V76.44","Screening for prostate cancer","","","N",u,d)
+return "Will check a PSA today for screening."
+}}{PSA()}]
+[.psadd][PSA was discussed and declined.]
+[.psych][Susan Hakeman, MD - (360) 671-1701
+Henry Levine, MD - (360) 671-0383
+Joshua Cohen, MD - (360) 671-0383
+Robert Watson, MD - (360) 398-8287
+Larry Freeman, MD - (360) 752-5527]
+[.pt][patient]
+[.Pt][Patient]
+[.ptf][print to fax]
+[.quant][serum quantatative beta-HCG]
+[.quit][Quitting smoking is the single best thing you can do for your health. ]
+[.r1y][Repeat in 1 year.]
+[.rc1m][Recheck in 1 month.]
+[.rc1w][Recheck in 1 week.]
+[.rc1y][Recheck in 1 year.]
+[.rc2m][Recheck in 2 months.]
+[.rc2w][Recheck in 2 weeks.]
+[.rc3m][Recheck in 3 months.]
+[.rc3w][Recheck in 3 weeks.]
+[.rc6m][Recheck in 6 months.]
+[.recall][{fn R() {
+MEL_SEND_FLAG("Flag","recallentry","N",str(._TODAYSDATE),PATIENT._CASUALNAME,"Recall entered in today's note","Update","")
+return ""}}{R()}Sent to recall desktop
+Ordering Provider:  {PATIENT.RESPPROVID}
+Time to be done:  
+Labs or other testing include:  
+ICD-9 code:
+Visit to follow testing:  ]
+[.relenza][{fn R(){local a=PATIENT_AGE(),b=str(._TODAYSDATE),e="",o="5",c="two inhalations ",f=" daily",s=c+"twice"+f
+if useryesno("Treatment?\\n(no if prophylaxis)")="No" then
+o="10"
+s=c+"once"+f
+if a<5 then
+if useryesno("For prophylaxis >5y/o. Cont?")="No" then return "" endif
+endif
+else
+if a<7 then
+if useryesno("For treatment >7y/o. Cont?")="No" then return "" endif
+endif
+endif
+e=ADDDATES(b,"0","0",o)
+MEL_ADD_MEDICATION("RELENZA DISKHALER",s,b,"61119",e,"qs","0")
+return "Start Relenza "+s
+}}{R()}]
+[.relenza2][{fn R(){local a=PATIENT_AGE(),b=str(._TODAYSDATE),e="",o="5",c="two inhalations ",m="twice",p="Not approved for <",q="y/o. Continue?",s=""
+if useryesno("Treatment?\\n(no if prophylaxis)")="No" then
+o="10"
+m="once"
+if a<5 then
+if useryesno(p+"5"+q)="No" then return "" endif
+endif
+else
+if a<7 then
+if useryesno(p+"7"+q)="No" then return "" endif
+endif
+endif
+s=c+m+" daily for "+o+" days."
+e=ADDDATES(b,"0","0",o)
+MEL_ADD_MEDICATION("RELENZA DISKHALER",s,b,"61119",e,"qs","0")
+return s
+}}{R()}]
+[.reminder][{INITIALCAP(PATIENT.FIRSTNAME)}:
+
+On review of our records you have an outstanding order for the following tests or services:
+
+{ORD_BY_STATUS('H')}{ORD_BY_STATUS('S')}
+
+We feel that it is important for you to complete all the appropriate tests and services that are ordered.  If this has already been completed, or if there is a reason that you do not wish to complete this, please let us know.
+
+
+
+Sincerely,
+
+
+
+John W. Raduege, MD]
+[.removal][.risk
+.vconsent
+.prep
+.local .localwith
+.incision
+.repair
+.wound]
+[.repair][Wound was repaired in two layers with 3 deep interrupted stitches of 3-0 vicryl and a superficial running stitch of 4-0 ethilon.  ]
+[.resp][normal respiratory effort ]
+[.retcall][Attempted to return call.  Left message that I will try to call back later.  {USER.REALNAME} {DATETIMESTAMP()}]
+[.retcalltom][Attempted to return call.  Left message that I will try to call back tommorow.  {USER.REALNAME} {DATETIMESTAMP()}]
+[.rheumletter][Pearson, M.D.
+601 N Barker Road
+Brookfield, WI 53045-5929
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.risk][Risks (including bleeding, infection, and scar formation), benefits, and alternatives were discussed.]
+[.rle][in the right lower extremity]
+[.rlq][soft, mild right lower quadrant tenderness, no guarding or rebound, normal bowel sounds, no masses, no hepatosplenomegaly or abdominal wall hernias]
+[.rom][range of motion]
+[.rp][{fn RP() {
+if (PATIENT_AGE() > 15) then
+return "patient"
+else
+if (OBSNOW("HX SOURCE") > 0) then
+return OBSNOW("HX SOURCE")
+endif
+return "parents"
+endif
+}}]
+[.rr][red reflex intact bilaterally]
+[.rrr][Regular rate and rhythm]
+[.rue][in the right upper extremity]
+[.ruq][soft, mild right upper quadrant tenderness, no guarding or rebound, normal bowel sounds, no masses, no hepatosplenomegaly or abdominal wall hernias]
+[.scabies][Will treat patient with elemite.  Discussed propper use.  All household members should be treated.  Will have them wash all bedding and towels and bag blankets and other items not easily washed for 3 days.  Discussed that the itching may be worse initially after the first treatment.   They will let me know if there is any recurrence.  .elimiterx]
+[.sed][Sedating side effects of this were discussed. ]
+[.sem][with a grade II/VI systolic murmur]
+[.septra][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(10,40,5,2)}]
+[.setup][{fn SETUP() {GLOBAL o,t,tn
+o=array("one","two","three","four","five","six","seven","eight","nine")
+t=array("ten","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety")
+tn=array("eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen")
+}}]
+[.shave][.risk
+.vconsent
+.betadine
+.local .localwith
+.shavep
+.wound ]
+[.shavep][lesion was shaved off flush with the surrounding skin with a dermablade.   Specimen submitted for pathology.  Bleeding was controlled with aluminum chloride. ]
+[.shots11y][{fn S11(){local r="Will update immunizations today with Tdap and Menactra. .shots11yinst",i="Immunizations/Vaccines"
+MEL_ADD_ORDER("S",i,"90715 - Tdap Vaccine, 7-64 y/o**")
+MEL_ADD_ORDER("S",i,"90734 - Menactra Vaccine**")
+return r}}{S11()}]
+[.shots11yinst][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("We updated immunizations today with Tdap (tetanus, diptheria, and pertussis) and Menactra (for meningitis). ")}]
+[.shots12m][{fn S12(){local r="Will update immunizations today with HIB, Prevnar and Hepatitis A. .shots12minst",i="Immunizations/Vaccines"
+MEL_ADD_ORDER("S",i,"90670 - PCV13 Pneumococcal Vaccine, under 5 yrs (PCV13)**")
+MEL_ADD_ORDER("S",i,"90648 - Hib Vaccine, PRP-T**")
+MEL_ADD_ORDER("S",i,"90633 - Hep A Vaccine, 12 months - 19 years, 2 dose series**")
+return r}}{S12()}]
+[.shots12minst][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("We updated immunizations today with Prevnar (PCV - for meningitis), HIB (also for meningitis) and hepatitis A.")}]
+[.shots15m][{fn S15(){local r="Will update immunizations today with DTaP, MMR and Varivax. .shots15minst",i="Immunizations/Vaccines"
+MEL_ADD_ORDER("S",i,"90700 - DTaP Vaccine, younger than 7 y/o**")
+MEL_ADD_ORDER("S",i,"90707 - MMR Vaccine**")
+MEL_ADD_ORDER("S",i,"90716 - Varicella Vaccine**")
+return r}}{S15()}]
+[.shots15minst][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("We updated immunizations today with DTaP (diptheria, tetanus and pertussis), MMR (measles, mumps and rubella), and Varivax (chickien-pox). ")}]
+[.shots18m][{fn S18(){local r="Will update immunizations today with Hepatitis A. .shots18minst",i="Immunizations/Vaccines"
+MEL_ADD_ORDER("S",i,"90633 - Hep A Vaccine, 12 months - 19 years, 2 dose series**")
+return r}}{S18()}]
+[.shots18minst][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("We updated immunizations today with hepatitis A. ")}]
+[.shots2m][{fn S2(){local r="Will update immunizations today with Pediarix, Prevnar, HIB (4 dose schedule), and RotaTeq. .shots2minst",i="Immunizations/Vaccines"
+MEL_ADD_ORDER("S",i,"90723 - Pediarix DTaP-IPV-HepB Vaccine**")
+MEL_ADD_ORDER("S",i,"90670 - PCV13 Pneumococcal Vaccine, under 5 yrs (PCV13)**")
+MEL_ADD_ORDER("S",i,"90648 - Hib Vaccine, PRP-T**")
+MEL_ADD_ORDER("S",i,"90680 - Rotavirus Vaccine, 6 weeks to 32 weeks, 3 doses**")
+return r}}{S2()}]
+[.shots2minst][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("We updated immunizations today with Pediarix (diptheria, tetanus, pertussis, polio, and hepatitis B), Prevnar (PCV - for meningitis), HIB (also for meningitis) and rotavirus (a viral diarrhea that often causes dehydration).")}]
+[.shots4m][{fn S4(){local r="Will update immunizations today with Pentacel, Prevnar, and RotaTeq. .shots4minst",i="Immunizations/Vaccines"
+MEL_ADD_ORDER("S",i,"90698 - Pentacel DTaP-IPV-HIB**")
+MEL_ADD_ORDER("S",i,"90670 - PCV13 Pneumococcal Vaccine, under 5 yrs (PCV13)**")
+MEL_ADD_ORDER("S",i,"90680 - Rotavirus Vaccine, 6 weeks to 32 weeks, 3 doses**")
+return r}}{S4()}]
+[.shots4minst][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("We updated immunizations today with Pentacel (diptheria, tetanus, pertussis, polio, and HIB), Prevnar (PCV - for meningitis), and rotavirus (a viral diarrhea that often causes dehydration).")}]
+[.shots4y][{fn S4Y(){local r="Will update immunizations today with DTaP, MMR, IPV and Varivax. .shots4yinst",i="Immunizations/Vaccines"
+MEL_ADD_ORDER("S",i,"90700 - DTaP Vaccine, younger than 7 y/o**")
+MEL_ADD_ORDER("S",i,"90707 - MMR Vaccine**")
+MEL_ADD_ORDER("S",i,"90713 - Poliovirus Vaccine (IPV)**")
+MEL_ADD_ORDER("S",i,"90716 - Varicella Vaccine**")
+return r}}{S4Y()}]
+[.shots4yinst][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("We updated immunizations today with DTaP (diptheria, tetanus and pertussis), MMR (measles, mumps and rubella), IPV (polio), and Varivax (chickien-pox). ")}]
+[.shots6m][{fn S2(){local r="Will update immunizations today with Pediarix, Prevnar, HIB (4 dose schedule), and RotaTeq. .shots6minst",i="Immunizations/Vaccines"
+MEL_ADD_ORDER("S",i,"90723 - Pediarix DTaP-IPV-HepB Vaccine**")
+MEL_ADD_ORDER("S",i,"90670 - PCV13 Pneumococcal Vaccine, under 5 yrs (PCV13)**")
+MEL_ADD_ORDER("S",i,"90648 - Hib Vaccine, PRP-T**")
+MEL_ADD_ORDER("S",i,"90680 - Rotavirus Vaccine, 6 weeks to 32 weeks, 3 doses**")
+return r}}{S2()}]
+[.shots6minst][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("We updated immunizations today with Pediarix (diptheria, tetanus, pertussis, polio, and hepatitis B), Prevnar (PCV - for meningitis), HIB (also for meningitis) and rotavirus (a viral diarrhea that often causes dehydration).")}]
+[.shotsinst][{ADDDATES(str(._TODAYSDATE),"0","0","10")}]
+[.shoulder][full range of motion of shoulder, non-tender to palpation, no pain or weakness with supraspinatous or external rotation impingement manuvers, peripheral pulses intact]
+[.shoulderinj][Risks (including bleeding, infection, and subcutaneous fat atrophy), benefits, and alternatives or cortisone injection were discussed.  Discussed that effectiveness varries widely both in degree of relief and how long the relief lasts.  Verbal informed consent was obtained.  Distal arcomion was palpated and the surrounding area prepped with betadine.  Using sterile techniche, the subacromial bursa was injected with a combination of 80 mg of Kenalog and 8 cc of lidocaine without epinephrine.  .shoulderinj2]
+[.shoulderinj2][Patient had good initial pain relief.  Discussed that patient may experience some worsening pain before it starts to improve.  Patient will call me after one week to let me know how this worked.  .cortinst]
+[.sig][.....................................{USER.REALNAME} {DATETIMESTAMP()}]
+[.sk][Discussed the nature of the problem with the patient.  Discussed that these are benign, age related skin changes that can run in family.   Discussed that unless they become symptomatic that they do not require any intervention.   ]
+[.skinp][{OBSPREV("SKIN SQ INSP")}]
+[.slr][straight leg raising negative]
+[.smoke][{fn O(){OBSANY(getarg(1))}}
+{fn X(){local r="Patient smokes "
+if O("CIGARET SMKG")=="yes", return r+O("SMOK HX PPD")+" packs per day."
+if O("CIGAR USE")=="yes", return r+"cigars." 
+if O("ORALTOBACUSE")=="yes", return "Patient uses chewing tobacco." 
+userok("Not addressed")
+return ""}}
+{fn SM() {local s=O("SMOK STATUS")
+if s=="never", return "Patient has never smoked."
+if s=="quit", return "Patient quit smoking in "+O("SMOK YR Q")+"."
+if s=="current", return X()
+}}{SM()}]
+[.sob][shortness of breath]
+[.spacer][{fn SP() {local r="Patient was given a prescription for a spacer and instructed in its use. .inhteach" d=str(._TODAYSDATE) e=ADDDATES(d,"0","1","0")
+MEL_ADD_MEDICATION("AEROCHAMBER Z-STAT PLUS CHAMB","use as directed with MDI",d,"125127",e,"1","0")
+return r}}{SP()}]
+[.sports][{INSERT_FORM_COMP("Enterprise\\WHC\\Pediatrics","WHC Sports Questionnaire")}]
+[.spruelabs][IgA antigliadin antibody	diarrhea
+IgG antigliadin antibody	diarrhea
+IgA antiendomysial antibody	diarrhea]
+[.sr][{fn SR() {MEL_ADD_ORDER("S","Office Visits/E&Ms","NO CHARGE Service**","","ICD-V58.32","Suture removal","","","")
+return "Sutures removed.   Wound care instructions discussed.  Patient will let us know if there are any further problems."}}{SR()}]
+[.ss][ Discussed signs or symptoms that should prompt re-evaluation.  ]
+[.ssri][Discussed the use of SSRI medication.  Explained that often it is necessary to try two or three different medications before finding the one that is best tolerated and most effective.  Discussed that there is a rare chance of worsening mood even to the point of suicidal thoughts and that should anything like that occur, the medication should be discontinued immediately.   Discussed that once a stable dose is found we will want to continue the medication for at least six months.]
+[.staph][Apply mupirocin ointment to anterior nares with a cotton swab twice daily for five consecutive days.
+Wash the entire body and scrub fingernails with a nail brush each day for three weeks with hibiclens soap.   Call if the skin is becoming too dry with doing this.
+Change towels, washclothes, and sheets daily and wash in hot water. 
+Clean shaving instruments thoroughly each day.
+Avoid picking nose.  ]
+[.statin][Recommended starting patient on a statin-type medication.  Discussed that optimal time to take is with the evening meal.  Discussed potential side effects including liver irritation and rhabdomyolysis.  Discussed need for following blood work and signs and symptoms that should prompt {If PATIENT.SEX == "M" , "him", if PATIENT.SEX == "F", "her", if PATIENT.SEX == "", "patient" } to call.  Will recheck a fasting lipid profile and CMP in two months. ]
+[.steroid][Reviewed instructions for use of topical steroids.  Discussed risk of permanent skin changes if misused.  {If PATIENT.SEX == "M" , "He", if PATIENT.SEX == "F", "She", if PATIENT.SEX == "", "Patient" } will not apply this to face or skin folds and will not use the medication for longer than two weeks without talking to me.   {If PATIENT.SEX == "M" , "He", if PATIENT.SEX == "F", "She", if PATIENT.SEX == "", "Patient" } will not use it on any other rashes without talking to me.]
+[.stob][short of breath]
+[.strep][Will treat the patient with penicillin.  Will treat the patient symptomatically with rest, fluids, tylenol, ibuprofen and warm salt water gargles.  Patient will let us know if not improving over the next three to four days.  Sooner if worse.]
+[.strepbung][{MEL_ADD_ORDER("S","In-House Services/Tests (WHC)","Strep, Rapid - In House","","ICD-462","Pharyngitis, acute","","","N")}]
+[.stretch][Stand with your toes pointing toward the wall and put your hands against the wall; let your body fall in toward the wall until you feel the pulling in the back of your legs;  when you feel the stretching, hold that for a count of 10 and then relax.   Repeat this 10 times.  ]
+[.strip][Risks benefits and alternatives of stripping membranes discussed.  Verbal informed consent was obtained.  Membranes were stripped.]
+[.sum][{fn V() {local h,i,d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+d=d+INITIALCAP(h\[i\]\[3\])+" - \\n\\n"
+endif
+endfor
+return "Today at your visit we discussed the following:\\n"+d}}{V()}]
+[.suprapubic][soft, mild suprapubic tenderness, no guarding or rebound, normal bowel sounds, no masses, no hepatosplenomegaly or abdominal wall hernias]
+[.surgeryletter][Waukesha General and Vascular Surgery, S.C.
+1111 Delafield St.  Suite 209
+Waukesha, WI 53188
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.t][{"\\t"}]
+[.tami][{fn A(){local w=(OBSANY("Weight")/2.2)
+if w>40,return 4
+if w>23,return 3
+if w>15,return 2
+return 1}}
+{fn T(){local d=array("1/2","3/4","1","1 and 1/4") s=" by mouth twice daily for five days" st="" b=str(._TODAYSDATE) e=ADDDATES(b,"0","0","5") id=array("131306","131305","131306","62113","69494") did=id\[A()\]
+st=" one pill"+s
+if A()=3,st=" two pills"+s
+if useryesno("Liquid?")="Yes" then
+st=d\[A()\]+" teaspoon"+s
+did=id\[5\]
+endif
+MEL_ADD_MEDICATION("TAMIFLU",st,b,did,e,"qs 5d","0")
+return ""}}{T()}]
+[.tca][Risks (including bleeding, infection, and scar formation), benefits, and alternatives were discussed. Verbal informed consent was obtained.  Wart was pared down to bleeding points and surrounded by vaseline.  TCA was applied to the wart and poked in with a wooden probe.  TCA was allowed to try and vaseline was removed.  Patient will return in 2 weeks for retreatment.]
+[.tcx][Your throat culture was normal (no group A strep).]
+[.temp][{fn TIT_SCHED() {LOCAL s, i
+s="\\tDates\\t\\t\\t\\tAM\\tnoon\\tPM\\n"
+for i=1, i<16 , i=i+1
+do
+s=s+"\\t"+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+if i=3 then
+s=s+"\\t\\t0\\t0\\t1/2\\n"
+endif
+if i=6 then
+s=s+"\\t\\t1/2\\t0\\t1/2\\n"
+endif
+if i=9 then
+s=s+"\\t\\t1/2\\t1/2\\t1/2\\n"
+endif
+if i=12 then
+s=s+"\\t\\t1/2\\t1/2\\t1\\n"
+endif
+if i=15 then
+s=s+"\\t\\t1\\t1/2\\t1\\n\\t" + 
+sub(adddates(DATESATMP(),"0","0","16"), 1, 5)+"on\\t\\t\\t2\\t2\\t2\\n"
+endif
+endfor
+return s
+}} {TIT_SCHED()}]
+[.teninj][Risks (including bleeding, infection, scar formation, and subcutaneous fat atrophy), benefits and alternatives discussed, verbal informed consent obtained.  Patient was placed in the Losee position and the tendon was palpated just anterior to the lateral epicondyle and the target area was outlined with a ballpoint pen.  The area was prepped in a sterile manner and 4cc of 1% lidocaine without epinephrine was infused into the area.  .teninj2]
+[.teninj2][After adequate anesthesia was obtained, 2cc of 40mg/mL Depo-Medrol was injected to the same area.  The area was cleansed and dressed with bacitracin and a bandaid.  Patient tolerated procedure well and had good initial pain relief.  .cortinst]
+[.test][Called patient with {If PATIENT.SEX == "M" , "his", if PATIENT.SEX == "F", "her", if PATIENT.SEX == "", "patient's" } test results.
+]
+[.testinst][Be sure to do testicular self exams once a month when you are in the shower and let us know if you find any hard lumps or bumps connected to the testicles.    ]
+[.tetanus][{fn IM(){MEL_ADD_ORDER("S","Immunizations/Vaccines","90715 - Tdap Vaccine, 7-64 y/o**","","ICD-V06.1","Tdap","","","",USER.LOGINNAME)
+return "Will update patient's tetanus today."}}{
+fn P1(){if useryesno("Adacel?")="Yes", return IM(), return "Patient reports tetanus is up to date."}}{
+fn DT(){local u="Patient's tetanus is up to date."
+if match(LISTPROTOCOLSHORT(),"TD BOOSTER")>0,return P1()
+if size(str(LASTOBSDATE("TD BOOSTER")))>0,return u
+if useryesno("Adacel?")="Yes",return IM(),return u}}{DT()}]
+[.therapy][Bayside Therapy Associates  - (360) 734-7310
+Associates in Mental Health - (360) 715-2488]
+[.tit2][{fn T() {local s,i,n=getarg(1)
+s="\\tDates\\t\\t\\t\\tAM\\tnoon\\tPM\\n"
+for i=1, i<((6*n)+1) , i=i+1
+do
+cond
+case (mod(i,n)=1) s=s+"\\t"+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+case i=6*n s=s+" on\\t\\t2\\t2\\t2\\n"
+case (mod(i,n)=0) s=s+" to "+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+cond 
+case i=n s=s+"\\t\\t0\\t0\\t1\\n"
+case i=2*n s=s+"\\t\\t1\\t0\\t1\\n"
+case i=3*n s=s+"\\t\\t1\\t1\\t1\\n"
+case i=4*n s=s+"\\t\\t1\\t1\\t2\\n"
+case i=5*n s=s+"\\t\\t2\\t1\\t2\\n"
+endcond
+endcond
+endfor
+return s}}{T(2)}]
+[.tit3][{fn T() {local s,i,n=getarg(1)
+s="\\tDates\\t\\t\\t\\tAM\\tnoon\\tPM\\n"
+for i=1, i<((6*n)+1) , i=i+1
+do
+cond
+case (mod(i,n)=1) s=s+"\\t"+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+case i=6*n s=s+" on\\t\\t2\\t2\\t2\\n"
+case (mod(i,n)=0) s=s+" to "+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+cond 
+case i=n s=s+"\\t\\t0\\t0\\t1\\n"
+case i=2*n s=s+"\\t\\t1\\t0\\t1\\n"
+case i=3*n s=s+"\\t\\t1\\t1\\t1\\n"
+case i=4*n s=s+"\\t\\t1\\t1\\t2\\n"
+case i=5*n s=s+"\\t\\t2\\t1\\t2\\n"
+endcond
+endcond
+endfor
+return s}}{T(3)}]
+[.tit7][{fn T() {local s,i,n=getarg(1)
+s="\\tDates\\t\\t\\t\\tAM\\tnoon\\tPM\\n"
+for i=1, i<((6*n)+1) , i=i+1
+do
+cond
+case (mod(i,n)=1) s=s+"\\t"+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+case i=6*n s=s+" on\\t\\t2\\t2\\t2\\n"
+case (mod(i,n)=0) s=s+" to "+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+cond 
+case i=n s=s+"\\t\\t0\\t0\\t1\\n"
+case i=2*n s=s+"\\t\\t1\\t0\\t1\\n"
+case i=3*n s=s+"\\t\\t1\\t1\\t1\\n"
+case i=4*n s=s+"\\t\\t1\\t1\\t2\\n"
+case i=5*n s=s+"\\t\\t2\\t1\\t2\\n"
+endcond
+endcond
+endfor
+return s}}{T(7)}]
+[.tlet][covering for Tracy Lewis, MD]
+[.toenail][Risks (including bleeding, infection,  scar formation and abnormal nail regrowth), benefits, and alternatives were discussed.  Informed consent was obtained.  Toe was prepped in a sterile fashion with betadine and digital block was performed with 1% lidocaine without epinephrine.  After adequate anesthesia was obtained, torniquet was applied, the nail was divided and the affected side was removed.  Nail origin was explored to make sure that the nail had been completely removed.  .toenail1]
+[.toenail1][Monsel's was then applied to the nail bed being careful to avoid the nail origin.  Tourniquet was removed and good hemostasis was observed.  Wound was then dressed with  bacitracin, xeroform gauze, telfa and tube gauze.  Will have patient start ibuprofen before anesthetic wears off and continue this on a regular schedule.  Will also send a script with the patient for tylenol #3 with codiene in case there is need for more analgesia than the ibuprofen can provide.  .toenail2]
+[.toenail2][{If PATIENT.SEX == "M" , "He", if PATIENT.SEX == "F", "She", if PATIENT.SEX == "", "Patient" } will keep the foot elevated as much as possible over the next few days to minimize swelling and will return in 2-5 days for a wound check, sooner if any signs or symptoms of infection.]
+[.toenailinst][Soak your foot in warm water with epsom salts once or twice a day.
+Use a part of a cotton ball to elevate the corner of the nail. 
+You will need to replace this daily.
+You can use a bandaid to help hold the cotton in place. 
+Cut the nail straight across as it grows out. 
+If it is not improving with this we will need to bring you back in and remove part of the nail.   ]
+[.tonsils][erythematous 2+ swollen tonsils, no exudate]
+[.triptan][Take one pill with onset of headache. May take a second pill in 2 hours if headache not relieved. Do not excede 2 pills in 24 hours.]
+[.trochinj][Risks (including bleeding, infection, subcuatneous fat atrophy, and scar formation), benefits, and alternatives were discussed.  Patient was positioned with the affected side up and a pillow between the knees.  The point of maximum tenderness was located and marked.  Area was prepped with betadine.   2 mL of 40mg/mL Kenalog was mixed with 5 cc of 1% lidocaine without epinpherine in a 10 cc syringe.  Using a 21 ga spinal needle the area of maximal tenderness was injected in 1-2 mL aliquots by .trochinj2]
+[.trochinj2][advancing the needle to the bone then withdrawing 1 mm, aspirating and then injecting, repositioning the needle slightly after each aliquot.  Needle was withdrawn, area was cleansed and dressed with a band-aid.  Patient had good initial pain relief.  Discussed that the hip may feel worse after the numbing medicine wears off but should improve over the next few days.  The patient will call me in one week to let me know how the hip is doing. .cortinst]
+[.u][John W. Raduege, M.D.]
+[.ule][in upper and lower extremities bilaterally]
+[.undoor][{fn UNDOOR() {local text res
+text = '{res = "\\nWeight: "+OBSANY("Weight")+"\\nHeight: "+OBSANY("Height")+"\\nBMI: "+OBSANY("BMI")}'
+eval(text)
+return res}}{UNDOOR()}]
+[.uri][Will treat the patient symptomatically with rest, fluids, ibuprofen, tylenol, etc.  Patient will let us know if any new or changing symptoms or if not improving over the next several days.]
+[.urinew][{fn URIFORAGE() {
+if (PATIENT_AGE() > 2) then
+return "ibuprofen, etc.  "
+else
+return "saline nasal spray and suctioning.  "
+endif 
+}} 
+Discussed symptomatic treatment with rest, fluids, tylenol, {URIFORAGE()} {INITIALCAP(RP())} will let us know if there are any new or changing symptoms or if {GEND()} is not improving over the next several days.  
+]
+[.uroletter][2600 N Mayfair Rd.  #545
+Milwaukee, WI 53226
+
+RE: {PATIENT.FIRSTNAME} {PATIENT.LASTNAME}
+DOB: {PATIENT.DATEOFBIRTH}]
+[.uti][{fn LAST_MED() {LOCAL list,i,med
+list=getfield(MEDS_NEW('list'),"\\r","")
+med=getfield(list\[(size(list)-1)\]," ","")
+return INITIALCAP(med\[1\]) 
+}}
+Will treat the patient with {LAST_MED()}.  {GEND(1)} will let us know if {GENDP()} symptoms are not improving over the next 24-48 hours or if they do not completely resolve. ]
+[.utiinst][We will send a urine culture and will let you know if that shows a need for a different antibiotic.   
+Take the antibiotic until it is all gone, even if you are feeling better.
+Call if your symptoms are not improving over the next 1-2 days or if they do not completely resolve before you are done with the antibiotics. ]
+[.v2][{INSERT_FORM_COMP("Enterprise\\WHC\\Exam","WHC Exam General V2")}]
+[.varivax][{fn V(){local r="Will also give a second dose of varivax today.",i="Immunizations/Vaccines"
+MEL_ADD_ORDER("S",i,"90716 - Varicella Vaccine**")
+return r}}{V()}]
+[.vconsent][Verbal informed consent was obtained.]
+[.viagrainst][For the viagra:
+Take it either with a low-fat meal or on an empty stomach.
+It is usually effective between 30 minutes to 4 hours after you take it. 
+The first two times you try it, take 1/2 pill.   If that doesn't work then the next two times take a whole pill.  
+If you get any blue tint to your vision or change in your hearing then stop taking it and let us know.  ]
+[.vitdimp][Please let the patient know that the vitamin D is now back in the normal range.   I would recommend continuing to take 1000 units of vitamin D on a daily basis to support this. ]
+[.vitdinst][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ".vitdinst2"}}{
+PI("Your vitamin D level is low.
+We will put you on a prescription strength dose once a week for the next 8 weeks. 
+At the same time you are on the prescription, start taking some over-the-counter vitamin D 1000 units once daily. 
+Always take your vitamin D with the largest meal of the day as it needs some fat to be absorbed.  ")}]
+[.vitdinst2][{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\\r\\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ".vitdrecall"}}{
+PI("We will send you a letter in 2 months to remind you to recheck the vitamin D level. ")}]
+[.vitdrecall][{fn R() {
+MEL_SEND_FLAG("Flag","recallentry","N",str(._TODAYSDATE),PATIENT._CASUALNAME,"Recall entered in today's note","Update","")
+return ""}}{R()}
+Sent to recall desktop  
+Ordering Provider:{PATIENT.RESPPROVID} 
+Time to be done: 2 months
+Lab: Vitamin D
+ICD-9 code: 268.9
+Visit to follow testing:
+.addvitd]
+[.vitdtest][Please inform patient Vitamin D level is low.  A normal level is 30-100.  Recommend starting a daily dose of 1000 IU of Vitamin D2 or D3 in addition to taking 50,000 units of Vitamin D weekly for the next 8 weeks.  At the end of 8 weeks, the level will need to be rechecked.  A letter will be sent as a reminder to have that lab work completed.
+.vitdrecall]
+[.vitdvis][Informed patient Vitamin D level is low.  A normal level is 30-100.  Recommended starting a daily dose of 1000 IU of Vitamin D2 or D3 in addition to taking 50,000 units of Vitamin D weekly for the next 8 weeks.  At the end of 8 weeks, the level will need to be rechecked.  A letter will be sent as a reminder to have that lab work completed.
+.vitdinst]
+[.vytorin][Please let patient know that this was not a safety issue but an effectiveness issue in this study.  The heart attack and stroke risk did not decrease any more with vytorin than it did with the same ammount of simvastatin (one of the ingredients in vytorin).  This study was done in patients that had a genetic condition which leads to very high cholesterols so it is not clear if this even applies to the general public.  The patient should continue on the vytorin for right now and schedule an appt to discuss.]
+[.wart][Discussed options for treatment including, duct tape, salicylic acid, cryotherapy and candida antigen,  discussed pro's, con's and success rate for each.]
+[.wcc][{fn W() {local o=" - Preventive Care, ",a=PATIENT_AGE(),e=" - EST Pt**",t=array("under 1 y/o","1-4 y/o","5-11 y/o","12-17 y/o"),b="9939",n=array("1","2","3","4"),i=0
+if useryesno("Est?")="No" then e=" - NEW Pt**"
+b="9938"
+endif
+if (a<1),i=1,i=2
+if (a>4),i=3
+if (a>11),i=4
+o=b+n\[i\]+o+t\[i\]+e
+MEL_ADD_ORDER("S","Preventive Care/Counseling",o,"","ICD-V20.2","Well Child","","","")
+return ""}}{W()}]
+[.wetprep][{fn WET() {MEL_ADD_ORDER("S","In-House Services/Tests (WHC)","Wet Prep/KOH - In House","","ICD-623.5","Vaginal discharge","","","N")
+return ""}}{WET()}]
+[.wf][with food]
+[.whc99201][{fn N1() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+f=sub(c,5,3)
+if(((f>299)and(f<315))or(f=278))then
+if((f>310)or(f<307))then
+if(useryesno("?")="Yes")then
+c="ICD-V58.83|"+c
+d="Med monitor|"+d
+endif
+endif
+endif
+MEL_ADD_ORDER("S","E&M Services (WHC)","Ofc Vst, New Level I","",c,d,"","","",USER.LOGINNAME)
+return ""}}{N1()}]
+[.whc99202][{fn N2() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+f=sub(c,5,3)
+if(((f>299)and(f<315))or(f=278))then
+if((f>310)or(f<307))then
+if(useryesno("?")="Yes")then
+c="ICD-V58.83|"+c
+d="Med monitor|"+d
+endif
+endif
+endif
+MEL_ADD_ORDER("S","E&M Services (WHC)","Ofc Vst, New Level II","",c,d,"","","",USER.LOGINNAME)
+return ""}}{N2()}]
+[.whc99203][{fn N3() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+f=sub(c,5,3)
+if(((f>299)and(f<315))or(f=278))then
+if((f>310)or(f<307))then
+if(useryesno("?")="Yes")then
+c="ICD-V58.83|"+c
+d="Med monitor|"+d
+endif
+endif
+endif
+MEL_ADD_ORDER("S","E&M Services (WHC)","Ofc Vst, New Level III","",c,d,"","","",USER.LOGINNAME)
+return ""}}{N3()}]
+[.whc99204][{fn N4() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+f=sub(c,5,3)
+if(((f>299)and(f<315))or(f=278))then
+if((f>310)or(f<307))then
+if(useryesno("?")="Yes")then
+c="ICD-V58.83|"+c
+d="Med monitor|"+d
+endif
+endif
+endif
+MEL_ADD_ORDER("S","E&M Services (WHC)","Ofc Vst, New Level IV","",c,d,"","","",USER.LOGINNAME)
+return ""}}{N4()}]
+[.whc99205][{fn N5() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+f=sub(c,5,3)
+if(((f>299)and(f<315))or(f=278))then
+if((f>310)or(f<307))then
+if(useryesno("Med monitoring?")="Yes")then
+c="ICD-V58.83|"+c
+d="Medication monitoring|"+d
+endif
+endif
+endif
+MEL_ADD_ORDER("S","E&M Services (WHC)","Ofc Vst, New Level V","",c,d)
+return ""}}{N5()}]
+[.whc99212][{fn E2() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+f=sub(c,5,3)
+if(((f>299)and(f<315))or(f=278))then
+if((f>310)or(f<307))then
+if(useryesno("?")="Yes")then
+c="ICD-V58.83|"+c
+d="Med monitor|"+d
+endif
+endif
+endif
+MEL_ADD_ORDER("S","E&M Services (WHC)","Ofc Vst, Est Level II","",c,d,"","","",USER.LOGINNAME)
+return ""}}{E2()}]
+[.whc99213][{fn E3() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+f=sub(c,5,3)
+if(((f>299)and(f<315))or(f=278))then
+if((f>310)or(f<307))then
+if(useryesno("?")="Yes")then
+c="ICD-V58.83|"+c
+d="Med monitor|"+d
+endif
+endif
+endif
+MEL_ADD_ORDER("S","E&M Services (WHC)","Ofc Vst, Est Level III","",c,d,"","","",USER.LOGINNAME)
+return ""}}{E3()}]
+[.whc99214][{fn E4() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+f=sub(c,5,3)
+if(((f>299)and(f<315))or(f=278))then
+if((f>310)or(f<307))then
+if(useryesno("?")="Yes")then
+c="ICD-V58.83|"+c
+d="Med monitor|"+d
+endif
+endif
+endif
+MEL_ADD_ORDER("S","E&M Services (WHC)","Ofc Vst, Est Level IV","",c,d,"","","",USER.LOGINNAME)
+return ""}}{E4()}]
+[.whc99215][{fn E5() {local h,i,c="",d="",f
+h=getfield(PROB_LIST_CHANGES("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h\[i\]=getfield(h\[i\],"^","")
+if sub(h\[i\]\[1\],1,3)="ASS" then 
+c=c+h\[i\]\[4\]+"|"
+d=d+h\[i\]\[3\]+"|"
+endif
+endfor
+f=sub(c,5,3)
+if(((f>299)and(f<315))or(f=278))then
+if((f>310)or(f<307))then
+if(useryesno("?")="Yes")then
+c="ICD-V58.83|"+c
+d="Med monitor|"+d
+endif
+endif
+endif
+MEL_ADD_ORDER("S","E&M Services (WHC)","Ofc Vst, Est Level V","",c,d,"","","",USER.LOGINNAME)
+return ""}}{E5()}]
+[.willd][will discuss results with patient at upcoming appointment on]
+[.wound][Area was cleansed and wound was dressed with bacitracin and a bandaid.  Wound care instructions were discussed.  ]
+[.woundinst][Keep the wound clean and dry for the next 24 hours.   
+After that you can shower normally but no soaking in a tub or going swimming until the stitches come out.  
+Keep an eye on the wound for signs of infection (increasing redness, increasing pain, increasing swelling or draining pus).
+Call me if anything like that occurs.
+Come back to have the stitches removed in ]
+[.wounds][Areas were cleansed and wounds were dressed with bacitracin and bandaids.  Wound care instructions were discussed.  ]
+[.xray][x-ray ordered and reviewed by me shows]
+[.ziegler][Family is going to Belieze for 12 days.  Will give prescriptions for typhoid vaccine and malaria prophylaxis.   Use and possible side effects discussed with mom. .zieglerrx]
+[.zieglerrx][{fn SC() {local d=str(._TODAYSDATE) e=ADDDATES(d,"0","1","0")
+MEL_ADD_MEDICATION("CHLOROQUINE","one pill my mouth once a week start 1-2 weeks before leaving and continue for 4 weeks after returning",d,"4491",e,"8","0")
+MEL_ADD_MEDICATION("VIVOTIF BERNA VACCINE CPDR","one capsule every other day for four doses;  give 1 hr before a meal with cold or lukewarm drink; do not cut/crush/chew capsules",d,"70423",e,"4","0")
+return ""}}{SC()}]
+[.zithro1][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(10,200,5,1)}]
+[.zithro2][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(5,200,5,1)}]
+[.zithromax][.zithro1
+the first day then .zithro2
+for four more days]
+[.zithrostrep][{fn DS() { LOCAL wt mgkg mg v dv dt d res x
+if getnargs()< 4 then return "error" endif
+mgkg=getarg(1)
+mg=getarg(2)
+v=getarg(3)
+dt=array("once daily","twice a day","three times a day","four times a day")
+wt=(OBSANY("Weight")/2.2)
+d=wt*mgkg
+dv=getarg(4)
+d=d/dv
+d=(d*v/mg)
+x=mod(d,1)*10
+if d<5 then
+if (x>0 and x<5) then
+d=div(d,1)+0.5
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+else
+if x>0 then
+d=div(d,1)+1
+endif
+endif
+res="take "+d+" mL by mouth "+dt\[dv\]
+return res}}{DS(12,200,5,1)}]
+[ahd][had]
+[ammount][amount]
+[amt][amount]
+[anythign][anything]
+[apin][pain]
+[apt][appointment]
+[availible][available]
+[BID][twice a day]
+[caffiene][caffeine]
+[coudl][could]
+[elt][let]
+[ESI][epidural steroid injection]
+[evaluatoin][evaluation]
+[evenign][evening]
+[everythign][everything]
+[evlauation][evaluation]
+[feelign][feeling]
+[hada][had any]
+[havign][having]
+[helpign][helping]
+[hlep][help]
+[hleping][helping]
+[hse][she]
+[htat][that]
+[hte][the]
+[htere][there]
+[htese][these]
+[htey][they]
+[htis][this]
+[improvign][improving]
+[knwo][know]
+[kow][know]
+[lenght][length]
+[liek][like]
+[llet][let]
+[medicatoin][medication]
+[monht][month]
+[monhts][months]
+[nomral][normal]
+[orhto][ortho]
+[orhtopedics][orthopedics]
+[OT][Occupational Therapy]
+[ov][ov]
+[patietn][patient]
+[Patietn][Patient]
+[Patinet][Patient]
+[patinet][patient]
+[possilbe][possible]
+[pt][patient]
+[Pt][Patient]
+[PT][physical therapy]
+[QID][four times a day]
+[re-evaluatoin][re-evaluation]
+[Seh][She]
+[seh][she]
+[sguar][sugar]
+[SHe][She]
+[shoudl][should]
+[somethign][something]
+[strenght][strength]
+[symtpoms][symptoms]
+[teh][the]
+[THe][The]
+[thign][thing]
+[thorat][throat]
+[TID][three times a day]
+[todya][today]
+[TSHR][TSH with reflex free T4]
+[wiht][with]
+[wil][will]
+[woudl][would]
+[wtih][with]
