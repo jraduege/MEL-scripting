@@ -1,0 +1,354 @@
+{fn ctest() {local a=PATIENT_AGE(),t=""
+cond
+case a<10 t="under 10"
+case a<20 t="teen"
+case a<30 t="twenty"
+case a<40 t="thirty"
+case a<50 t="forty"
+case a<60 t="fifty"
+case a<70 t="sixty"
+case a<80 t="seventy"
+endcond
+return t}}{ctest()}
+
+{fn bp() {local a=ccc_preg_ary()
+if a[2]>258 then userok("Term")
+else
+userok("Preterm")
+endif
+return ""}}{bp()}
+
+{fn obed() {local a=ccc_preg_ary(),d=a[2],t=""
+cond
+case d<81 t="8"
+case d<105 t="12"
+case d<133 t="16"
+case d<161 t="20"
+case d<189 t="24"
+case d<203 t="28"
+case d<217 t="30"
+case d<231 t="32"
+case d<245 t="34"
+case d<257 t="36"
+case d<264 t="37"
+case d<271 t="38"
+case d<278 t="39"
+case d<285 t="40"
+case d>284 t="41"
+endcond
+userok(t)
+return ""}}{obed()}
+
+{fn homer() {local ph=PATIENT.HOMELOCATIONNAME,uh=USER.HOMELOCATIONNAME,eq=""
+if match(ph,uh)>0 then eq="Match"
+else eq="Mismatch"
+endif
+userok ("Patient: "+ph+"\n"+"User: "+uh+"\n"+eq)
+return ""}}{homer()}
+
+{DOCUMENT.PROVIDER}
+
+John W Raduege MD 
+
+{fn fcn_ob_call_phone(){local p=getarg(1),a=""
+cond
+case p="John W Raduege MD" a="(360)671-3345|(360)715-2448|There are four family doctors at North Sound Family Medicine that deliver babies, and you will have the opportunity to meet each of us during your pregnancy. "
+case p="Mary J Swanson MD" a="(360)671-3345|(360)715-2448|There are four family doctors at North Sound Family Medicine that deliver babies, and you will have the opportunity to meet each of us during your pregnancy. "
+case p="Anneliese H Floyd MD" a="(360)671-3345|(360)715-2448|There are four family doctors at North Sound Family Medicine that deliver babies, and you will have the opportunity to meet each of us during your pregnancy. "
+case p="April K Wakefield-Pagels MD" a="(360)671-3345|(360)715-2448|There are four family doctors at North Sound Family Medicine that deliver babies, and you will have the opportunity to meet each of us during your pregnancy. "
+case p="Steven J Alexander MD" a="(360)354-1333|(360)714-3808|"
+case p="Rodney J Anderson MD" a="(360)671-3900|(360)725-2427|"
+case p="Jennifer A Bates MD" a="(360)384-1511|(360)715-2446|"
+case p="Shannon M Billau DO" a="(360)671-4402|(360)715-2422|"
+case p="Edward W Bloom MD" a="(360)671-3900|(360)725-2427|"
+case p="Jessica J Bloom MD" a="(360)671-3900|(360)725-2427|"
+case p="Steve M Bloom MD" a="(360)671-4402|(360)715-2422|"
+case p="Ian D Bonner, MD" a="(360)671-3900|(360)725-2427|"
+case p="Hannah M Bujak MD" a="(360)354-1333|(360)714-3808|"
+case p="Renay K Fredette MD, MSNu" a="(360)384-1511|(360)715-2446|"
+case p="Frederick John Gunningham MD" a="(360)371-5855|(360)714-3808|"
+case p="S. Harry Herdman MD" a="(360)733-7974|(360)715-2422|"
+case p="Stephen A Lewis MD" a="(360)384-1511|(360)715-2446|"
+case p="Deborah M Roessler MD" a="(360)733-7974|(360)715-2422|"
+case p<>"" userok("Provider not found, please insert phone numbers manually") a=array("    |    ")
+endcond
+return a}}
+{fn fcn_ob_ed() {local a=ccc_preg_ary(),d=a[2],t="",phone=getfield(str(fcn_ob_call_phone(DOCUMENT.PROVIDER)),"|","")
+cond
+case d<81 t="8 weeks"+"\n"+"Congratulations on your pregnancy!  We are delighted to provide your pregnancy care.  At 8 weeks of pregnancy, your baby is about the size of a kidney bean. "+"\n"+"The OB packet you were given today has a lot of good information, please look through it. "+"\n"+phone[3]+"You can always reach the on call doctor by calling the clinic:"+phone[1]+", or after hours by calling the clinic answering service: "+phone[2]+"."+"\n"+"If you haven't already, talk to your doctor about whether or not to do genetic screening (the 'Integrated Screen')."+"\n"+"Nausea is very common in early pregnancy.  Some helpful things to try include: small frequent meals, ginger or ginger root, water with lemon, acupressure wrist bands, sucking on hard sugar free candies,  and plenty of rest.  If these are not helpful, please discuss with your doctor."+"\n"+"Prenatal vitamins are important.  They provide folic acid (folate) to prevent spina bifida, and iron to support normal blood count and prevent anemia."+"\n"+"Remember to avoid any exposure to cigarette smoke or alcohol."+"\n"+"Your next regularly scheduled appointment will be in 4 weeks."
+case d<105 t="12 weeks"+"\n"+"You are now entering your second trimester.  Your baby is the size of a lime (1/2 oz, 2 inches long)."+"\n"+"Your risk of miscarriage is significantly less than it was in the first trimester.  In your second trimester, you should have less fatigue and more energy."+"\n"+"Exercise in pregnancy is very important.  We recommend continuing your usual exercise routine, and if you don't exercise already you should start walking or swimming 30 minutes at least 3-4 times per week.  It will help you to be strong for delivery but also helps decrease fatigue in pregnancy."+"\n"+"Your uterus is now above the pubic bone – this means that you want to protect your abdomen from direct blows (no more contact sports)."+"\n"+"Your next regularly scheduled appointment will be in 4 weeks."
+case d<133 t="16 weeks"+"\n"+"Your baby is now the size of an avocado (4 1/2 inches long, 3 1/2 ounces) and the baby is starting to sprout hair and grow eyelashes, as well as learning to look around as she develops earliest eyesight.  This is an exciting time of pregnancy because in the next 2 to 4 weeks you will start to feel the baby moving."+"\n"+"Your body is changing: the round ligaments are thickening and stretching as your uterus grows up out of your pelvis.  You may feel round ligament pain as a jabbing sensation or a stabbing pain if you suddenly change position, you can also feel it as a dull ache after a particularly active day."+"\n"+"With your uterus enlarging, you may want to practice sleeping on your side and not on your back.  Don't be alarmed if you go to sleep on your side and wake up on your back, it happens all the time, and shouldn't have any serious negative effect on your baby's health."+"\n"+"Normal weight gain in the first half of pregnancy (through 20 weeks) is 10 pounds.  Remember to make healthy food choices and exercise regularly."+"\n"+"Don't forget to schedule your next ultrasound between 18 and 22 weeks.  This is to check that everything is developing properly with the baby (and you may find out gender if you desire).  If you have elected to do the integrated screen for genetic screening, you will need to get the second step blood test between 15-18 weeks of pregnancy."+"\n"+"Your next regularly scheduled appointment will be in 4 weeks."
+case d<161 t="20 weeks"+"\n"+"Congratulations!  You are halfway through your pregnancy.  Your baby is about the length of a banana and weighs about 10 ounces (just over half a pound).  Your baby just started hearing in the last couple weeks. You should read and talk to your baby every day."+"\n"+"This is an important time to stay active.  Challenge yourself to exercise 15-30 minutes daily.  Daily exercise reduces excess weight gain and diabetes of pregnancy and helps keep you strong for delivery and after you have the baby."+"\n"+"This is a good time to choose a doctor for your baby if you haven't already.  As Family Medicine Physicians, we take care of patients of all ages and we would be delighted to care for your baby."+"\n"+"Your next regularly scheduled appointment will be in 4 weeks."
+case d<189 t="24 weeks"+"\n"+"You are now past the halfway point of pregnancy and your baby is about the size of an ear of corn, weighing about a pound.  You should be feeling regular movements from your baby."+"\n"+"Soon the the baby will start responding to the sound of your voice with movement."+"\n"+"Nutrition Note:  Calcium and vitamin D are important as well, especially during the third trimester, when your baby's bones are rapidly growing and strengthening. In addition to your prenatal vitamin, drink vitamin D-fortified low-fat milk or other calcium-rich foods containing vitamin D. If you don't drink milk or eat calcium-rich foods, talk to your health care provider about calcium and vitamin D supplements."+"\n"+"Around 28 weeks you will need to do a blood test for gestational diabetes (diabetes of pregnancy).   You will need drink a very sweet soda and have your blood drawn an hour later.   You should not have anything to eat or drink during that hour."+"\n"+"Your next appointment will be in 4 weeks."
+case d<203 t="28 weeks"+"\n"+"You are now into your third trimester.   Your baby is now about the size of a butternut squash, weighing about 2 1/4 pounds."+"\n"+"It is normal to start feeling occasional contractions (Braxton-Hix contractions).   If you have more than four episodes of tightening over an hour drink a large glass of water then lie down.   Call us if you continue to have more than 4 uncomfortable contractions over the next hour.    Also call if you have any gush of fluids or bright red vaginal bleeding.    If you are noticing that baby has not been moving then drink something sweet or cold and lie down, putting your hands on your belly.   Call if you do not feel increased movement over the next hour. "+"\n"+"Now is a good time to get childbirth classes set up if you haven't already."
+case d<217 t="30 weeks"+"\n"+"Your baby is now almost 3 pounds, about the weight of a head of cabbage."+"\n"+"Remember to call if you have more than 4 uncomfortable contractions an hour that don't go away with lying down and drinking a large glass of water, if you have bright red vaginal bleeding, a large gush of fluids, or decreased fetal movement."+"\n"+"Your next appointment should be in 2 weeks."
+case d<231 t="32 weeks"+"\n"+"Your baby is now about 3 3/4 pounds, the weight of a small pineapple, and has toenails and fingernails.   You may be gaining about a pound a week."+"\n"+"It is common to have trouble sleeping.   Try getting a body pillow or a using pillow between your knees and avoid drinking liquids for an hour before bedtime.   You can also try sleeping in a comfortable recliner."+"\n"+"Remember to call if you have more than 4 uncomfortable contractions an hour that don't go away with lying down and drinking a large glass of water, if you have bright red vaginal bleeding, a large gush of fluids, or decreased fetal movement."+"\n"+"Your next appointment should be in 2 weeks."
+case d<245 t="34 weeks"+"\n"+"Your baby is now about 14-18 inches long and about 4 3/4 pounds."+"\n"+"At the next visit we will do the group B strep culture.   This looks for a bacteria that can often be found in the vaginal area which won't cause you any problems but can infect baby as baby comes through the birth canal.    If the bacteria are there then we will need to give you antibiotics through the vein while you are in labor."+"\n"+"Remember to call if you have more than 4 uncomfortable contractions an hour that don't go away with lying down and drinking a large glass of water, if you have bright red vaginal bleeding, a large gush of fluids, or decreased fetal movement."+"\n"+"Your next appointment should be in 2 weeks."
+case d<257 t="36 weeks"+"\n"+"Your baby is gaining about an ounce a day and is starting to run out of room.   You will feel more stretches, rolls and wiggles rather than the big kicks you used to feel."+"\n"+"We will now be seeing you every week until you deliver."+"\n"+"Call if you are having strong regular contractions that make you stop what you are doing to breathe through them that are coming about every five minutes apart over an hour."+"\n"+"Also call if you are having any leaking fluids, either a big gush or a steady trickle that keeps dripping down your legs."
+case d<264 t="37 weeks"+"\n"+"Call if you are having strong regular contractions that make you stop what you are doing to breathe through them that are coming about every five minutes apart over an hour."+"\n"+"Also call if you are having any leaking fluids, either a big gush or a steady trickle that keeps dripping down your legs."
+case d<271 t="38 weeks"+"\n"+"Call if you are having strong regular contractions that make you stop what you are doing to breathe through them that are coming about every five minutes apart over an hour."+"\n"+"Also call if you are having any leaking fluids, either a big gush or a steady trickle that keeps dripping down your legs."
+case d<278 t="39 weeks"+"\n"+"Call if you are having strong regular contractions that make you stop what you are doing to breathe through them that are coming about every five minutes apart over an hour."+"\n"+"Also call if you are having any leaking fluids, either a big gush or a steady trickle that keeps dripping down your legs."
+case d<285 t="40 weeks"+"\n"+"Call if you are having strong regular contractions that make you stop what you are doing to breathe through them that are coming about every five minutes apart over an hour."+"\n"+"Also call if you are having any leaking fluids, either a big gush or a steady trickle that keeps dripping down your legs."
+case d>284 t="41 weeks"+"\n"+"Call if you are having strong regular contractions that make you stop what you are doing to breathe through them that are coming about every five minutes apart over an hour."+"\n"+"Also call if you are having any leaking fluids, either a big gush or a steady trickle that keeps dripping down your legs."
+endcond
+return t}
+
+------------------
+
+{fn phfmt() {local ar=""
+ar=getfield(str(ph(DOCUMENT.PROVIDER)),"|","")
+return ar[1]}}{phfmt()}
+
+
+{fn bungitall() {local p=getarg(1),a=""
+cond
+case p="A" a="1|2|3"
+case p="B" a="1|2|"
+endcond
+return a}
+}{fn allitbung(){local ar=getfield(str(bungitall("A")),"|","") br=getfield(str(bungitall("B")),"|","")
+userok(ar[3]+"\n"+br[3])
+return ""}}{allitbung()}
+
+----------------------------
+
+{fn P() {local t=getarg(1),x=getarg(2)
+return val(DURATIONDAYS(t,ADDDATES(str(._TODAYSDATE),"0",str(x),"0")))}
+}{fn G() {local h,i
+if (LASTOBSVALUE("HGBA1c")<7),h=170,h=80
+if (LASTOBSVALUE("LDL")<100),i=350,i=80
+return h+","+i}
+}{fn R() {
+MEL_SEND_FLAG("Flag","ddiabetes","N",str(._TODAYSDATE),PATIENT._CASUALNAME,"Recall entered in today's note","Update","")
+return ""}}
+{fn D() {local  f=getfield(getarg(1)),r=array(""),a=LASTOBSDATE("HGBA1C"),l=LASTOBSDATE("LDL"),u=LASTOBSDATE("MICROALB/CRE"),c=LASTOBSDATE("CREATININE")
+if (u="" or (P(u,3)>350)),insert(r,1,"Urine microalbumin/Cr ratio")
+if (c="" or (P(c,3)>170)),insert(r,1,"CMP")
+if (l="" or (P(l,3)>f[2])),insert(r,1,"FLP with reflex direct LDL")
+if (a="" or (P(a,3)>f[1])),insert(r,1,"HgbA1c")
+remove(r,size(r))
+return str(r,", ")}}Follow up for diabetic visit in 3 months
+Labs needed for that visit:  {D(G())}{R()}
+
+---------------------------
+
+{fn R() {
+MEL_SEND_FLAG("Flag","ddiabetes","N",str(._TODAYSDATE),PATIENT._CASUALNAME,"Recall entered in today's note","Update","")
+return ""}}{R()}Follow up diabetic visit in 3 months
+Labs needed for that visit:  HgbA1c, FLP with direct LDL if indicated, CMP, Urine albumin/creatinine ratio
+
+
+----------------------------
+
+{fn AI(){local i=OBSNOW("Instructions")
+userok(i)
+return ""}}{AI()}
+
+{fn AI(){local i=OBSNOW("Instructions")
+OBSNOW("Instructions",i+"\nMore instructions",sub(str(DOCUMENT.CLINICALDATE),1,10))
+return ""}}{AI()}
+
+-----------------------------
+
+{fn T() {local s,i,n=getarg(1)
+s="\tDates\t\t\t\tAM\tnoon\tPM\n"
+for i=1, i<((6*n)+1) , i=i+1
+do
+cond
+case (mod(i,n)=1) s=s+"\t"+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)+" to "
+case (mod(i,n)=0) s=s+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+cond 
+case i=n s=s+"\t\t0\t0\t1\n"
+case i=2*n s=s+"\t\t1\t0\t1\n"
+case i=3*n s=s+"\t\t1\t1\t1\n"
+case i=4*n s=s+"\t\t1\t1\t2\n"
+case i=5*n s=s+"\t\t2\t1\t2\n"
+case i=6*n s=s+"\t\t2\t2\t2\n"
+endcond
+endcond
+endfor
+return s}}{T(3)}
+
+{fn T() {local s,i,n=getarg(1)
+s="\tDates\t\t\t\tAM\tnoon\tPM\n"
+for i=1, i<((6*n)+1) , i=i+1
+do
+cond
+case (mod(i,n)=1) s=s+"\t"+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+case i=6*n s=s+" on\t\t2\t2\t2\n"
+case (mod(i,n)=0) s=s+" to "+sub(adddates(DATESTAMP(),"0","0",str(i)), 1, 5)
+cond 
+case i=n s=s+"\t\t0\t0\t1\n"
+case i=2*n s=s+"\t\t1\t0\t1\n"
+case i=3*n s=s+"\t\t1\t1\t1\n"
+case i=4*n s=s+"\t\t1\t1\t2\n"
+case i=5*n s=s+"\t\t2\t1\t2\n"
+endcond
+endcond
+endfor
+return s}}{T(3)}
+ 
+------------------------------------
+
+{fn L() {local o=getarg(1),n=getarg(2),a,x,r
+a=getfield(LIST_OBS(o,"pencil","list","valuedate"),"\r")
+x=match(a[n],1,"(")
+r=remove(a[n],x)+"\n"+sub(a[n],x+1,10)
+return r}}{L("BP SYSTOLIC",2)}
+
+bungl2a
+
+
+{fn bungsert2() {DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+"\nBung!"
+return ""}}{bungsert2()}
+
+{fn bungsert() {DOCUMENT.TEMP_359659547_417_4509116="Bung!"}}{bungsert()}
+DOCUMENT.TEMP_CCC_INSTRUCTIONS_FL_TXT
+
+.bungsert 
+
+-----------------------------
+
+{fn fcn_sepval() {
+	local ray=getfield(getarg(1))
+	j=getarg(2)
+	return ray[j]
+}
+	
+}
+{fn fcn_getval() {local o=getarg(1),n=getarg(2),a,x,r
+a=getfield(LIST_OBS(o,"pencil","list","valuedate"),"\r")
+x=match(a[n],1,"(")
+r=remove(a[n],x)+"\n"+sub(a[n],x+1,10)
+return r}}
+
+{!FCN_BP1_DATE=fcn_sepval(fcn_getval("BP SYSTOLIC",1),2)}
+{!FCN_BP2_DATE=fcn_sepval(fcn_getval("BP SYSTOLIC",2),2)}
+{!FCN_BP3_DATE=fcn_sepval(fcn_getval("BP SYSTOLIC",3),2)}
+
+{fn fcn_sepval() {local ray=getfield(getarg(1),"\n") j=getarg(2)
+return ray[j]
+}}{fn fcn_getval() {local o=getarg(1),n=getarg(2),a,x,r
+a=getfield(LIST_OBS(o,"pencil","list","valuedate"),"\r")
+x=match(a[n],1,"(")
+r=remove(a[n],x)+"\n"+sub(a[n],x+1,10)
+return r}}{fcn_sepval(fcn_getval("BP SYSTOLIC",1),1)}
+
+First blood pressure is in 1 and date is in 2, subsequent blood pressures are in 2 and dates in 3
+
+bungbp1date
+---------------------
+{fn BS() {userok("1)"+DOCUMENT.TEMP_CCC_PI_MLEF)
+return ""}}{BS()}
+
+{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\r\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("We updated immunizations today with Pediarix (diptheria, tetanus, pertussis, polio, and hepatitis B), Prevnar (PCV - for meningitis), HIB (also for meningitis) and rotavirus (a viral diarrhea that often causes dehydration).")}  
+
+{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\r\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("We updated immunizations today with Tdap (tetanus, diptheria, and pertussis) and Menactra (for meningitis). ")}
+
+---------------------
+ADD^CHANTIX STARTING MONTH PAK ^145940^
+
+ADD^CHANTIX CONTINUING MONTH PAK 1 MG TABS^120186^
+
+{fn CHANT() {local d
+d=str(._TODAYSDATE)
+MEL_ADD_MEDICATION("CHANTIX STARTER MONTH PAK","0.5 mg by mouth once a day for three days, then 0.5 mg twice a day for four days, then 1 mg twice a day",d,"145940",ADDDATES(d,"0","1","0"),"1 pack","0")
+MEL_ADD_MEDICATION("CHANTIX CONTINUING MONTH PAK","one pill by mouth twice a day for five months after finishing starter pack",ADDDATES(d,"0","1","1"),"120186",ADDDATES(d,"0","6","1"),"1 pack","4")
+return "Will start patient on Chantix." }}{CHANT()}
+
+
+{fn PI() {local x=size(DOCUMENT.TEMP_CCC_PI_MLEF) n="" a=getarg(1)
+if x>0, n="\r\n"
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+a
+return ""}}{
+PI("Call me if any of the side effects are significant or bothersome. 
+After you finish the starting month pack, fill the continuing month pack.
+Continue on these for two to five more months.  
+People who took the chantix for six months total were more likely to quit permanently than people who used it for a shorter time. ")}
+
+-----------------------
+
+{fn GP() {local h,i,c="",d="",f
+h=getfield(PROB_AFTER("delimited"),"|","")
+for i=1, i<(size(h)+1), i=i+1
+do
+h[i]=getfield(h[i],"^","")
+c=c+sub(h[i][3],5,3)+", "
+endfor
+return c}}{match(GP(),"401")}
+
+HTN = 401 or 403
+DM = 250
+Lipids = 272
+0 
+
+--------------------------
+
+{fn GC() {local h,i,c="",d="",f,a=str(getarg(1))
+h=getfield(PROB_AFTER("delimited"),"|","")
+for i=1, i<=size(h), i=i+1
+do
+h[i]=getfield(h[i],"^","")
+if match(sub(h[i][3],5,3),a)>0 then 
+c=h[i][3]
+d=h[i][2]
+return c+"|"+d
+endif
+endfor
+userok("matching problem not found")
+return ""}}{GC(250)}
+
+x=getfield(GC(250),"|","")
+x[1] is the ICD-9 code
+x[2] is the description
+if size(x)<2 return error message and enter order without diagnosis
+ 
+ICD-250.00|DIABETES MELLITUS, TYPE II 
+
+{fn GC() {local h,i,c="",d="",f,a=str(getarg(1))
+h=getfield(PROB_AFTER("delimited"),"|","")
+for i=1, i<=size(h), i=i+1
+do
+h[i]=getfield(h[i],"^","")
+if match(sub(h[i][3],5,3),a)>0 then 
+c=h[i][3]
+d=h[i][2]
+return c+"|"+d
+endif
+endfor
+userok("matching problem not found")
+return ""}}
+{fn DM() {local d,x=getfield(fcn_dm_getcode(250),"|","")
+if (getnargs()>0)then
+d=ADDDATES(str(._TODAYSDATE),"0",str(getarg(1)),"0")
+else d=str(._TODAYSDATE)
+endif
+MEL_ADD_ORDER("T","Labs","Glycohemoglobin (A1c)","",x[1],x[2],"","","N","",d)
+MEL_SEND_FLAG("Flag","ddiabetes","N",str(._TODAYSDATE),PATIENT._CASUALNAME,"Recall entered in today's note","Update","")
+return "Follow up diabetic visit in 3 months
+Labs needed for that visit:  HgbA1c"
+}}{DM(3)}
+----------------------------
+
+{OBSNOW("Pap Due") = ADDDATES(str(._TODAYSDATE),"1","0","0")}
+
+{fn fut_pap() {local n=getarg(1)
+OBSNOW("Pap Due", ADDDATES(str(._TODAYSDATE),n,"0","0"))
+return ""}}{fut_pap("2")}
+
+
+{fcn_dm_recalla1c(3)}
+{fcn_dm_recalla1c(6)}
+
+
+Follow up diabetic visit in 3 months
+Labs needed for that visit:  HgbA1c  
+ 
