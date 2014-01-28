@@ -1,0 +1,44 @@
+{fn ARR(){local weight=(OBSANY("Weight")/2.2)
+if weight>40,return 4
+if weight>23,return 3
+if weight>15,return 2
+return 1}
+}{fn INF(){local age=PATIENT._AGEINMONTHS
+if age<3,return 1
+if age<6,return 2
+return 3}
+}{fn TAMI(){
+local dose=array("1/2","3/4","1","1 and 1/4")
+infdose=array("1","1.6","2")
+age=PATIENT._AGEINMONTHS
+sigbegin=" by mouth "
+freq="twice"
+sigmid=" daily for "
+days=5
+sigend=" days" 
+fullsig="" 
+quant=""
+begindate=str(._TODAYSDATE) 
+enddate=ADDDATES(b,"0","0","5") id=array("131306","131305","131306","62113","167718") 
+ddid=id[ARR()]
+if (age>=12) then
+   if useryesno("For treatment?\n(select no for prophylaxis)")="No" then
+      freq="once"
+      days=10
+   endif
+   fullsig=" one pill"+sigbegin+freq+sigmid
+   if ARR()=3 then 
+      fullsig=" two pills"+sigbegin+freq+sigmid
+   endif
+   if useryesno("Liquid?")="Yes" then
+      fullsig=dose[ARR()]+" teaspoon"+sigbegin+freq+sigmid
+      ddid=id[5]
+   endif
+else
+   ddid=id[5]
+   fullsig=infdose[INF()]+" mL"+sigbegin+freq+sigmid
+endif
+fullsig=fullsig+days+sigend
+quant="qs "+days+"d"
+MEL_ADD_MEDICATION("TAMIFLU", fullsig,begindate,ddid,enddate,quant,"0")
+return "Will start patient on Tamiflu"+fullsig}}{TAMI()}
