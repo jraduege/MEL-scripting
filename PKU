@@ -1,0 +1,7 @@
+{fn PKU() {local b=str(PATIENT.DATEOFBIRTH),t=str(._TODAYSDATE),d=t,r
+if (DURATIONDAYS(b,t)<7), d=ADDDATES(b,"0","0","7")
+MEL_ADD_ORDER("T","Labs","Metabolic Screen, Newborn,(PKU)","","ICD-V20.2","Well child care","","","","",d)
+if (d=t) then r="today"
+else r="between "+d+" and "+ADDDATES(d,"0","0","7")
+endif
+return "Will order 2nd metabolic screen to be done "+r+". "}}{PKU()}
