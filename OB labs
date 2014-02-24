@@ -21,3 +21,29 @@ do
 MEL_ADD_ORDER("T","Labs",a[j],"",c,d,"","","")
 endfor
 return ""}}{L()}
+
+-----------------------
+
+28 week OB labs
+
+{fn L() {local c="",d="",s="CBC no diff|Glucose, Prenatal (Glucola)"
+if OBSANY("RH TYPE")="Negative", s=s+"|Antibody Screen"
+a=getfield(s,"|","")
+h=getfield(PROB_AFTER("delimited"),"|","")
+for i=1,i<=(size(h)),i=i+1
+do
+h[i]=getfield(h[i],"^","")
+if sub(h[i][3],5,3)="V22" then
+c=c+h[i][3]+"|"
+d=d+h[i][2]+"|"
+endif
+if sub(h[i][3],5,3)="V23" then
+c=c+h[i][3]+"|"
+d=d+h[i][2]+"|"
+endif
+endfor
+for j=1,j<=(size(a)),j=j+1
+do
+MEL_ADD_ORDER("T","Labs",a[j],"",c,d,"","","")
+endfor
+return ""}}{L()}
