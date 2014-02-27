@@ -5,3 +5,16 @@ if (d=t) then r="today"
 else r="between "+d+" and "+ADDDATES(d,"0","0","7")
 endif
 return "Will order 2nd metabolic screen to be done "+r+". "}}{PKU()}
+
+Version  with patient instructions (doesn't fully work - puts in newline even when instructions empty)
+
+{fn P() {local b=str(PATIENT.DATEOFBIRTH),t=str(._TODAYSDATE),d=t,r,n="",o
+if DOCUMENT.TEMP_CCC_PI_MLEF="",n="\r\n"
+if (DURATIONDAYS(b,t)<7), d=ADDDATES(b,"0","0","7")
+MEL_ADD_ORDER("T","Labs","Metabolic Screen, Newborn,(PKU)","","ICD-V20.2","Well child","","","","",d)
+if (d=t) then r="today"
+else r="between "+d+" and "+ADDDATES(d,"0","0","7")
+endif
+o="the 2nd metabolic screen done "+r+". "
+DOCUMENT.TEMP_CCC_PI_MLEF=DOCUMENT.TEMP_CCC_PI_MLEF+n+"Please have the "+o
+return "Will have "+o}}{P()}
