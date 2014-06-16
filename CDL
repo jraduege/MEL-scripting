@@ -1,0 +1,6 @@
+{fn cdldx() {MEL_ADD_PROBLEM('MDXOF','CDL EXAM','ICD-V70.3')}
+return ""}}{cdldx}
+
+{fn cdlo() {
+MEL_ADD_ORDER("S","Office Visits/E&Ms","99499 - CDL DOT Exam**","","ICD-V70.3","CDL Exam","","","")
+return ""}}{cdlo()}
